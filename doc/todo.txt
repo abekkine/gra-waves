@@ -5,3 +5,5 @@
 0005 | OPEN | All methods will be pre-implemented with 'TODO' comment tag, which will be replaced with 'DONE' after completion.
 0006 | CLOSED | 'TODO' keyword in message body ('todo.txt') causes script to malfunction.
 0007 | OPEN | Application crashes when run without a command line parameter. A default one must be defined.
+0008 | OPEN | All method pre-implementations should compile without warning.
+0009 | OPEN | Fix code to remove return value warning.
