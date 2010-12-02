@@ -21,9 +21,9 @@ for line in content:
     id_string = line_array[0]
     if len( line_array )>2:
         message = line_array[2]
-        if 'TODO' in message:
+        if '{TODO}' in message:
             msg = message.strip().split()
-            msg.remove( 'TODO' )
+            msg.remove( '{TODO}' )
             if len( msg )==0:
                 # Unused new item exists.
                 print "Use existing new item."
@@ -52,10 +52,10 @@ if len( id_numbers )>0:
 	id_numbers.sort()
 	new_no = id_numbers[-1:][0][0]+1 
 	new_id_string = '{0:04d}'.format( new_no )
-	new_line = '%s | OPEN | TODO\n' % new_id_string
+	new_line = '%s | OPEN | {TODO}\n' % new_id_string
 	content.append( new_line )
 else:
-	content.append( '0001 | OPEN | TODO' )
+	content.append( '0001 | OPEN | {TODO}' )
 
 f = open( 'todo.txt', 'w' )
 f.writelines( content )
