@@ -3,3 +3,5 @@
 0003 | CLOSED | version file and python bytecode will be added to ignore list.
 0004 | OPEN | Version information will be displayed when application is run.
 0005 | OPEN | All methods will be pre-implemented with 'TODO' comment tag, which will be replaced with 'DONE' after completion.
+0006 | OPEN | 'TODO' keyword in message body ('todo.txt') causes script to malfunction.
+0007 | OPEN | Application crashes when run without a command line parameter. A default one must be defined.
