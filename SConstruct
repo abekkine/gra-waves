@@ -1,15 +1,23 @@
 # Helper library for Simba SCons builds.
 import os
-import buildlib
+import sys
 
+sys.path.append( './lib' )
+import revlib
+
+VERSION_INC = 'inc/version.h'
 TARGET_NAME = 'grawvs'
 
 env = Environment()
+
+if not env.GetOption( 'clean' ):
+	revlib.getRevisionString( os.path.abspath( '.' ), VERSION_INC )
 
 clean_files = []
 clean_files.append( '.sconsign.dblite' )
 clean_files.append( 'results.xml' )
 clean_files.append( 'bin/core' )
+clean_files.append( VERSION_INC )
 env.Clean( 'default', clean_files )
 
 env.ParseConfig( 'sdl-config --cflags --libs' )
