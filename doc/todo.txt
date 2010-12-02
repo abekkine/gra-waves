@@ -1,1 +1,2 @@
 0001 | OPEN | Algorithm will be documented.
+0002 | OPEN | Revision number will be embedded into application.
