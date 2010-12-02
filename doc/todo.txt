@@ -1,3 +1,5 @@
 0001 | OPEN | Algorithm will be documented.
 0002 | CLOSED | Revision number will be embedded into application.
 0003 | CLOSED | version file and python bytecode will be added to ignore list.
+0004 | OPEN | Version information will be displayed when application is run.
+0005 | OPEN | All methods will be pre-implemented with 'TODO' comment tag, which will be replaced with 'DONE' after completion.
