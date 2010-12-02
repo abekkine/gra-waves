@@ -1,0 +1,42 @@
+Gravitational Wave Simulation Algorithms:
+
+Body Algorithm
+
+    for each [body] in [universe]
+    begin
+        extract the list of waves containing the [body] that is not induced by [body] itself.
+        eliminate all waves from the same [source] except for the youngest ones.
+        calculate acceleration vector to [body] using remaining wave list.
+        set [body] acceleration vector.
+        update [body] velocity vector.
+        update [body] positions.
+    end
+
+Wave Algorithm
+
+    for each [wave] in [universe]
+    begin
+        if [wave] [age] exceeds [wave_life]
+        begin
+            discard wave.
+        else
+            update [wave] [radius] according to constant [speed] value.
+            update [wave] [age] value.
+        end
+    end
+
+Universe Algorithm
+
+    while not done
+    begin
+        update [bodies] in [universe] for current [time_frame].
+        update [waves] in [universe] for current [time_frame].
+
+        for each [body] in [universe]
+        begin
+            initiate a new [wave] of [age] zero from current [body] [position].
+        end
+
+        increment [time_frame].
+    end
+
