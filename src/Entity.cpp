@@ -2,16 +2,16 @@
 
 Entity::Entity()
 {
-	// TODO
+	// TODO : Call [initVars] method.
 }
 
 Entity::~Entity()
 {
-	// TODO
+	// TODO : Free allocated objects, if any.
 }
 
 void Entity::initVars()
 {
-	// TODO
+	// TODO : General initialization of all members.
 }
 

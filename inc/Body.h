@@ -8,6 +8,8 @@ class Body : public Entity {
 public:
 	Body();
 	~Body();
+	// TODO : Method [SetAccelaration] will be declared.
+	// TODO : [Update] method should accept [double timeStep] parameter.
 	void Update();
 
 private:

@@ -2,22 +2,24 @@
 
 Body::Body()
 {
-	// TODO
+	// TODO : Method [initVars] should be called.
 }
 
 Body::~Body()
 {
-	// TODO
+	// TODO : Any allocated objects should be freed.
 }
 
 void Body::initVars()
 {
-	// TODO
+	// TODO : Initialization of member variables should be performed.
 }
 
+// TODO : All update methods should accept [double timeStep] as parameter.
 void Body::Update()
 {
-	// TODO
+	// TODO : Velocity should be updated according to [timeStep].
+	// TODO : Position should be updated according to [timeStep].
 }
 
-
+// TODO : Method [SetAccelaration] will be implemented.

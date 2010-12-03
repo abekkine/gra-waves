@@ -10,14 +10,21 @@ class Wave
 {
 public:
 	Wave();
+	// TODO : Instead of center, use [body] reference to create wave instance.
 	Wave( Vector& center );
+	// TODO : Wave initialization will be performed in universe, so change method below to void.
 	Wave *Update();
 	~Wave();
+	// TODO : Method [IsAlive] will be added to check wave status.
 
 
 private:
+	// TODO : Constant [conLifetime] added to keep track of wave lifetime.
+	// TODO : Member [alive] should be added to indicate wave is active.
 	const Scalar conSpeed;
+	// TODO : Rename 'id' as [source] to indicate inducing [body] id.
 	unsigned int id;
+	// TODO : Rename 'frame' to [age], used as sim_time.
 	unsigned int frame;
 	Scalar radius;
 	Scalar mass;

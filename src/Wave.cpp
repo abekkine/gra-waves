@@ -1,27 +1,35 @@
 #include <Wave.h>
 
+// TODO : Constant [conLifetime] will be initialized.
 Wave::Wave():conSpeed( WAVE_SPEED )
 {
-	// TODO
+	// TODO : Call [initVars] for general initialization.
 }
 
+// TODO : Constructor will use [body] instead of [center].
+// TODO : Constant [conLifetime] will be initialized.
 Wave::Wave( Vector& center ):conSpeed( WAVE_SPEED )
 {
-	// TODO
+	// TODO : Call [initVars] for general initialization.
+	// TODO : Use [body] reference for special initialization.
 }
 
 Wave::~Wave()
 {
-	// TODO
+	// TODO : cleanup any allocated objects.
 }
 
 void Wave::initVars()
 {
-	// TODO
+	// TODO : initialize member variables.
 }
 
+// TODO : change to void function.
 Wave* Wave::Update()
 {
-	// TODO
+	// TODO : increment wave age.
+	// TODO : check wave age and deactive it if necessary.
+	// TODO : update wave radius.
 }
 
+// TODO : implement [IsAlive] method.

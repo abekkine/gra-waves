@@ -3,15 +3,19 @@
 GraWaves::GraWaves( int node_id )
 {
 	initVars();
+	// DONE : 
 }
 
 GraWaves::GraWaves()
 {
 	initVars();
+	// DONE :
 }
 
 GraWaves::~GraWaves()
 {
+	// TODO : Delete [display] resource.
+	// TODO : Delete [universe] resource.
 }
 
 void GraWaves::initVars()
@@ -20,13 +24,17 @@ void GraWaves::initVars()
 	display = NULL;
 	quitCondition = false;
 	numTicks = 0;
+	// TODO : Initialize [universe] to NULL.
 }
 
+// TODO : All [Update] methods should accept [double timeStep] as parameter.
 void GraWaves::Update()
 {
 	int keyCode = -1;
 
 	keyCode = GetKey();
+
+	// TODO : Call [universe] [Update] method.
 }
 
 void GraWaves::Initialize()
@@ -38,8 +46,11 @@ void GraWaves::Initialize()
 	display->Init();
 
 	timer->Reset();
+
+	// TODO : Initialize [universe].
 }
 
+// TODO : Remove [ReadKey] method.
 void GraWaves::ReadKey()
 {
 	static int lastKey = -1;
@@ -61,6 +72,7 @@ void GraWaves::ReadKey()
 	}
 }
 
+// TODO : Remove [GetKey] method.
 int GraWaves::GetKey()
 {
 	int key = -1;
@@ -83,6 +95,7 @@ void GraWaves::Run()
 		numTicks = timer->GetElapsed();
 		if( numTicks > 500000 )
 		{
+			// TODO : [Update] method call should include [timeStep] value as parameter.
 			Update();
 			timer->Reset();
 		}
@@ -90,8 +103,10 @@ void GraWaves::Run()
 		display->Update();
 		display->PollEvents();
 
+		// TODO : Remove [ReadKey] method call.
 		ReadKey();
 
 		quitCondition = display->CheckQuit();
 	}
 }
+
