@@ -24,8 +24,9 @@ void Wave::initVars()
 	// TODO : initialize member variables.
 }
 
-// TODO : change to void function.
-Wave* Wave::Update()
+// DONE : change to void function.
+// TODO : All Update methods should accept [double timeStep] as parameter.
+void Wave::Update()
 {
 	// TODO : increment wave age.
 	// TODO : check wave age and deactive it if necessary.

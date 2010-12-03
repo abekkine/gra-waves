@@ -15,7 +15,7 @@ void Body::initVars()
 	// TODO : Initialization of member variables should be performed.
 }
 
-// TODO : All update methods should accept [double timeStep] as parameter.
+// TODO : All Update methods should accept [double timeStep] as parameter.
 void Body::Update()
 {
 	// TODO : Velocity should be updated according to [timeStep].

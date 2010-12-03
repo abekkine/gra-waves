@@ -12,8 +12,9 @@ public:
 	Wave();
 	// TODO : Instead of center, use [body] reference to create wave instance.
 	Wave( Vector& center );
-	// TODO : Wave initialization will be performed in universe, so change method below to void.
-	Wave *Update();
+	// DONE : Wave initialization will be performed in universe, so change method below to void.
+	// TODO : All Update methods should accept [double timeStep] as parameter.
+	void Update();
 	~Wave();
 	// TODO : Method [IsAlive] will be added to check wave status.
 
