@@ -8,7 +8,8 @@ class Vector
 public:
 	Vector();
 	Vector( double x, double y, double z );
-	// TODO : Implement either [Set] method or overload '=' operator.
+	// DONE : Implement either [Set] method or overload '=' operator.
+	void Set( double x, double y, double z );
 	~Vector();
 
 	double x;
