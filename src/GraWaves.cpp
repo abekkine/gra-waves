@@ -32,10 +32,6 @@ void GraWaves::initVars()
 // TODO : All [Update] methods should accept [double timeStep] as parameter.
 void GraWaves::Update()
 {
-	int keyCode = -1;
-
-	keyCode = GetKey();
-
 	// TODO : Call [universe] [Update] method.
 }
 
@@ -52,43 +48,8 @@ void GraWaves::Initialize()
 	// TODO : Initialize [universe].
 }
 
-// TODO : Remove [ReadKey] method.
-void GraWaves::ReadKey()
-{
-	static int lastKey = -1;
-	keyCode = display->GetKey();
-
-	if( keyCode != -1 )
-	{
-		if( ! keyQueue.empty() )
-		{
-			lastKey = keyQueue.back();
-		}
-
-		if( lastKey != keyCode )
-		{
-			keyQueue.push_back( keyCode );
-		}
-
-		lastKey = keyCode;
-	}
-}
-
-// TODO : Remove [GetKey] method.
-int GraWaves::GetKey()
-{
-	int key = -1;
-	std::vector< int >::iterator first;
-
-	if( ! keyQueue.empty() )
-	{
-		first = keyQueue.begin();
-		key = *first;
-		keyQueue.erase( first );
-	}
-
-	return key;
-}
+// DONE : Remove [ReadKey] method.
+// DONE : Remove [GetKey] method.
 
 void GraWaves::Run()
 {
@@ -105,8 +66,7 @@ void GraWaves::Run()
 		display->Update();
 		display->PollEvents();
 
-		// TODO : Remove [ReadKey] method call.
-		ReadKey();
+		// DONE : Remove [ReadKey] method call.
 
 		quitCondition = display->CheckQuit();
 	}

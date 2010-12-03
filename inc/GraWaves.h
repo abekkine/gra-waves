@@ -19,17 +19,13 @@ class GraWaves
 		void Update();
 		void Initialize();
 		void Run();
-		// TODO : remove key input related methods.
-		void ReadKey();
-		int GetKey();
+		// DONE : remove key input related methods.
 
 	private:
 		int numBodies;
 		Universe *universe;
 		Renderer *display;
-		// TODO : remove key input related variables.
-		int keyCode;
-		std::vector< int > keyQueue;
+		// DONE : remove key input related variables.
 		bool quitCondition;
 		unsigned int numTicks;
 		Timer *timer;
