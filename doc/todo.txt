@@ -7,3 +7,4 @@
 0007 | CLOSED | Application crashes when run without a command line parameter. A default one must be defined.
 0008 | OPEN | All method pre-implementations should compile without warning.
 0009 | OPEN | Fix code to remove return value warning.
+0010 | OPEN | Files and code will be rearranged according to provided Algorithm document.
