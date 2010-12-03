@@ -1,36 +1,62 @@
 #include <Wave.h>
 
-// TODO : Constant [conLifetime] will be initialized.
-Wave::Wave():conSpeed( WAVE_SPEED )
+// DONE : Constant [conLifetime] will be initialized.
+Wave::Wave():conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
 {
-	// TODO : Call [initVars] for general initialization.
+	// DONE : Call [initVars] for general initialization.
+	initVars();
 }
 
-// TODO : Constructor will use [body] instead of [center].
-// TODO : Constant [conLifetime] will be initialized.
-Wave::Wave( Vector& center ):conSpeed( WAVE_SPEED )
+// DONE : Constructor will use [body] instead of [center].
+// DONE : Constant [conLifetime] will be initialized.
+Wave::Wave( Body& body ):conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
 {
-	// TODO : Call [initVars] for general initialization.
-	// TODO : Use [body] reference for special initialization.
+	// DONE : Call [initVars] for general initialization.
+	initVars();
+	// DONE : Use [body] reference for special initialization.
+	source = body.Identifier();
+	mass = body.GetMass();
+	center = body.GetPosition();
+	radius = 0.0;
 }
 
 Wave::~Wave()
 {
-	// TODO : cleanup any allocated objects.
+	// DONE : cleanup any allocated objects.
 }
 
 void Wave::initVars()
 {
-	// TODO : initialize member variables.
+	// DONE : initialize member variables.
+	source = -1;
+	mass = 0.0;
+	center.Set( 0.0, 0.0, 0.0 );
+	radius = 0.0;
+	age = 0.0;
+	alive = false;
 }
 
 // DONE : change to void function.
-// TODO : All Update methods should accept [double timeStep] as parameter.
-void Wave::Update()
+// DONE : All Update methods should accept [double timeStep] as parameter.
+void Wave::Update( double timeStep )
 {
-	// TODO : increment wave age.
-	// TODO : check wave age and deactive it if necessary.
-	// TODO : update wave radius.
+	// DONE : check wave age and deactive it if necessary.
+	if( age > conLifetime )
+	{
+		alive = false;
+	}
+	else
+	{
+		// DONE : increment wave age.
+		age += timeStep;
+		// DONE : update wave radius.
+		radius += timeStep * conSpeed;
+	}
 }
 
-// TODO : implement [IsAlive] method.
+// DONE : implement [IsAlive] method.
+bool Wave::IsAlive()
+{
+	return alive;
+}
+

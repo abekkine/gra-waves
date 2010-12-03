@@ -1,35 +1,38 @@
 #ifndef WAVE_H
 #define WAVE_H
 
-#include <Point.h>
 #include <Vector.h>
+#include <Body.h>
 
 #define WAVE_SPEED 1.0
+#define WAVE_LIFE 100.0
 
 class Wave
 {
 public:
 	Wave();
-	// TODO : Instead of center, use [body] reference to create wave instance.
-	Wave( Vector& center );
+	// DONE : Instead of center, use [body] reference to create wave instance.
+	Wave( Body& body );
 	// DONE : Wave initialization will be performed in universe, so change method below to void.
-	// TODO : All Update methods should accept [double timeStep] as parameter.
-	void Update();
+	// DONE : All Update methods should accept [double timeStep] as parameter.
+	void Update( double timeStep );
 	~Wave();
-	// TODO : Method [IsAlive] will be added to check wave status.
-
+	// DONE : Method [IsAlive] will be added to check wave status.
+	bool IsAlive();
 
 private:
-	// TODO : Constant [conLifetime] added to keep track of wave lifetime.
-	// TODO : Member [alive] should be added to indicate wave is active.
+	// DONE : Constant [conLifetime] added to keep track of wave lifetime.
+	const Scalar conLifetime;
+	// DONE : Member [alive] should be added to indicate wave is active.
+	bool alive;
 	const Scalar conSpeed;
-	// TODO : Rename 'id' as [source] to indicate inducing [body] id.
-	unsigned int id;
-	// TODO : Rename 'frame' to [age], used as sim_time.
-	unsigned int frame;
+	// DONE : Rename 'id' as [source] to indicate inducing [body] id.
+	unsigned int source;
+	// DONE : Rename 'frame' to [age], used as sim_time.
+	Scalar age;
 	Scalar radius;
 	Scalar mass;
-	Point center;
+	Vector center;
 
 	void initVars();
 	

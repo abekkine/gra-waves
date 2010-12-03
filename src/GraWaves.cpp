@@ -16,8 +16,10 @@ GraWaves::GraWaves()
 
 GraWaves::~GraWaves()
 {
-	// TODO : Delete [display] resource.
-	// TODO : Delete [universe] resource.
+	// DONE : Delete [display] resource.
+	delete display;
+	// DONE : Delete [universe] resource.
+	delete universe;
 }
 
 void GraWaves::initVars()
@@ -26,13 +28,15 @@ void GraWaves::initVars()
 	display = NULL;
 	quitCondition = false;
 	numTicks = 0;
-	// TODO : Initialize [universe] to NULL.
+	// DONE : Initialize [universe] to NULL.
+	universe = NULL;
 }
 
-// TODO : All [Update] methods should accept [double timeStep] as parameter.
-void GraWaves::Update()
+// DONE : All [Update] methods should accept [double timeStep] as parameter.
+void GraWaves::Update( double timeStep )
 {
-	// TODO : Call [universe] [Update] method.
+	// DONE : Call [universe] [Update] method.
+	universe->Update( timeStep );
 }
 
 void GraWaves::Initialize()
@@ -45,7 +49,9 @@ void GraWaves::Initialize()
 
 	timer->Reset();
 
-	// TODO : Initialize [universe].
+	// DONE : Initialize [universe].
+	universe = new Universe();
+	universe->Initialize( numBodies );
 }
 
 // DONE : Remove [ReadKey] method.
@@ -58,8 +64,8 @@ void GraWaves::Run()
 		numTicks = timer->GetElapsed();
 		if( numTicks > 500000 )
 		{
-			// TODO : [Update] method call should include [timeStep] value as parameter.
-			Update();
+			// DONE : [Update] method call should include [timeStep] value as parameter.
+			Update( 1.0 );
 			timer->Reset();
 		}
 

@@ -1,6 +1,7 @@
 #ifndef BODY_H
 #define BODY_H
 
+#include <stdlib.h>
 #include <Entity.h>
 
 class Body : public Entity {
@@ -8,12 +9,14 @@ class Body : public Entity {
 public:
 	Body();
 	~Body();
-	// TODO : Method [SetAccelaration] will be declared.
-	// TODO : [Update] method should accept [double timeStep] parameter.
-	void Update();
+	void AtRandom( Scalar radius );
+	// DONE : Method [SetAcceleration] will be declared. (Defined in Entity).
+	// DONE : [Update] method should accept [double timeStep] parameter.
+	void Update( double timeStep );
 
 private:
 	void initVars();
+	double RandomBetween( double min, double max );
 };
 
 #endif

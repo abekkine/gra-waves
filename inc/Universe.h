@@ -4,7 +4,7 @@
 #include <vector>
 #include <Wave.h>
 
-#define UNIVERSE_SIZE 100
+#define UNIVERSE_RADIUS 1000.0
 
 using namespace std;
 
@@ -12,25 +12,28 @@ class Universe
 {
 public:
 	Universe();
+	Universe( Scalar radius );
 	~Universe();
 
-	// TODO : All [Update] methods should accept [double timeStep] as parameter.
-	void Update();
-	// TODO : Add number of bodies as a parameter to [Initialize] method.
-	void Initialize();
+	// DONE : All [Update] methods should accept [double timeStep] as parameter.
+	void Update( double timeStep );
+	// DONE : Add number of bodies as a parameter to [Initialize] method.
+	void Initialize( int numBodies );
 
 private:
-	// TODO : Rename conSize to [conLifetime] and move into Wave class.
-	const int conSize;
-	// TODO : Rename age variable to [time].
-	// TODO : Change type of variable to 'double'.
-	unsigned int age;
+	// Radius of the universe; needed for body insertion.
+	Scalar radius;
+	int numBodies;
+	// DONE : Rename conSize to [conLifetime] and move into Wave class.
+	// DONE : Rename age variable to [time].
+	// DONE : Change type of variable to 'double'.
+	double time;
 
-	// TODO : Add a storage variable to store bodies.
+	// DONE : Add a storage variable to store bodies.
+	vector< Body * > bodies;
 	vector< Wave * > waves;
 
 	void initVars();
-
 };
 
 #endif

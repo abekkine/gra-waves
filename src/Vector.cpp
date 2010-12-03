@@ -2,7 +2,7 @@
 
 Vector::Vector()
 {
-	// TODO : Call [Set] method to initialize members.
+	// DONE : Call [Set] method to initialize members.
 	Set( 0.0, 0.0, 0.0 );
 }
 
@@ -14,7 +14,7 @@ Vector::Vector( double x, double y, double z )
 
 Vector::~Vector()
 {
-	// TODO : Free allocated objects, if any.
+	// DONE : Free allocated objects, if any.
 }
 
 // DONE : Implement [Vector::Set] method or overload '=' operator.

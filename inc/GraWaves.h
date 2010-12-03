@@ -16,7 +16,7 @@ class GraWaves
 		GraWaves();
 		GraWaves( int numBodies );
 		~GraWaves();
-		void Update();
+		void Update( double timeStep );
 		void Initialize();
 		void Run();
 		// DONE : remove key input related methods.
