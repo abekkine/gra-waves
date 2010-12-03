@@ -8,4 +8,4 @@
 0008 | OPEN | All method pre-implementations should compile without warning.
 0009 | OPEN | Fix code to remove return value warning.
 0010 | OPEN | Files and code will be rearranged according to provided Algorithm document.
-0011 | OPEN | Build with highest warning level.
+0011 | CLOSED | Build with highest warning level.

@@ -21,7 +21,7 @@ clean_files.append( VERSION_INC )
 env.Clean( 'default', clean_files )
 
 env.ParseConfig( 'sdl-config --cflags --libs' )
-env.Append( CPPFLAGS = [ '-g', '-Wall' ] )
+env.Append( CPPFLAGS = [ '-g', '-Wall',  '-Wextra' ] )
 env.Append( CPPPATH = [ 'inc' ] )
 env.Append( LIBS = [ 'GL' ] )
 
