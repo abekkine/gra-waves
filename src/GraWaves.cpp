@@ -1,15 +1,17 @@
 #include "GraWaves.h"
 
-GraWaves::GraWaves( int node_id )
+GraWaves::GraWaves( int numBodies )
 {
 	initVars();
-	// DONE : 
+	// DONE : Reserve [numBodies] for instantiating [universe] object.
+	GraWaves::numBodies = numBodies;
 }
 
 GraWaves::GraWaves()
 {
 	initVars();
-	// DONE :
+	// DONE : Reserve a default number of bodies, for instantiating [universe] object.
+	GraWaves::numBodies = DEFAULT_NUM_BODIES;
 }
 
 GraWaves::~GraWaves()

@@ -6,13 +6,15 @@
 #include <Renderer.h>
 #include <Universe.h>
 
+#define DEFAULT_NUM_BODIES 10
+
 using namespace std;
 
 class GraWaves
 {
 	public:
 		GraWaves();
-		GraWaves(int node_id);
+		GraWaves( int numBodies );
 		~GraWaves();
 		void Update();
 		void Initialize();
@@ -22,8 +24,8 @@ class GraWaves
 		int GetKey();
 
 	private:
+		int numBodies;
 		Universe *universe;
-
 		Renderer *display;
 		// TODO : remove key input related variables.
 		int keyCode;
