@@ -10,6 +10,14 @@
 
 using namespace std;
 
+typedef struct
+{
+	unsigned int numBodies;
+	unsigned int numWaves;
+	Scalar age;
+
+} StatsType;
+
 typedef vector< Body * > BodyVectorType;
 typedef vector< Wave * > WaveVectorType;
 
@@ -24,6 +32,7 @@ public:
 	void Update( double timeStep );
 	// DONE : Add number of bodies as a parameter to [Initialize] method.
 	void Initialize( int numBodies );
+	void DumpStats();
 
 private:
 	const Scalar conGravity;
@@ -38,6 +47,9 @@ private:
 	// DONE : Add a storage variable to store bodies.
 	BodyVectorType bodies;
 	WaveVectorType waves;
+
+	// Collect stats.
+	StatsType stats;
 
 	void initVars();
 	void GetWavesCoveringBody( Body* body, WaveVectorType& waves );

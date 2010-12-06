@@ -37,6 +37,7 @@ void GraWaves::Update( double timeStep )
 {
 	// DONE : Call [universe] [Update] method.
 	universe->Update( timeStep );
+	universe->DumpStats();
 }
 
 void GraWaves::Initialize()
@@ -51,6 +52,8 @@ void GraWaves::Initialize()
 
 	// DONE : Initialize [universe].
 	universe = new Universe();
+	//DEBUG
+	printf( "GraWaves::Initialize() universe of %d bodies.\n", numBodies );
 	universe->Initialize( numBodies );
 }
 
@@ -61,11 +64,11 @@ void GraWaves::Run()
 {
 	while( not quitCondition )
 	{
-		numTicks = timer->GetElapsed();
-		if( numTicks > 500000 )
+		//numTicks = timer->GetElapsed();
+		//if( numTicks > 500000 )
 		{
 			// DONE : [Update] method call should include [timeStep] value as parameter.
-			Update( 1.0 );
+			Update( 0.1 );
 			timer->Reset();
 		}
 

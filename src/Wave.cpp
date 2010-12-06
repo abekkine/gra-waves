@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <Wave.h>
 
 // DONE : Constant [conLifetime] will be initialized.
@@ -18,6 +19,7 @@ Wave::Wave( Body* body ):conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
 	mass = body->GetMass();
 	center = body->GetPosition();
 	radius = 0.0;
+	alive = true;
 }
 
 Wave::~Wave()

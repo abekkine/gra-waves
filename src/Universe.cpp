@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <Universe.h>
 
 Universe::Universe() : conGravity( GRAVITY_COEF )
@@ -39,12 +40,19 @@ void Universe::initVars()
 	time = 0.0;
 	bodies.clear();
 	waves.clear();
+
+	// Stats
+	stats.numBodies = 0;
+	stats.numWaves = 0;
+	stats.age = 0.0;
 }
 
 // DONE : Universe::Update() method should be implemented.
 // DONE : Universe::Update() method should accept [double timeStep] as parameter.
 void Universe::Update( double timeStep )
 {
+	Universe::time += timeStep;
+
 	// DONE : Update all waves.
 	// DONE : Discard inactive waves.
 	WaveVectorType::iterator iWave;
@@ -104,11 +112,22 @@ void Universe::Update( double timeStep )
 // DONE : Universe::Initialize( n ) method should be initialized.
 void Universe::Initialize( int numBodies )
 {
+	Body* a_body;
+	Wave* a_wave;
 	Universe::numBodies = numBodies;
 
-	// TODO : Inject all bodies into universe.
+	// DONE : Inject all bodies into universe.
+	// DONE : Inject all waves into universe.
+	for( int i=0; i<Universe::numBodies; i++ )
+	{
+		a_body = new Body();
+		a_body->AtRandom( UNIVERSE_RADIUS );
+		bodies.push_back( a_body );
 
-	// TODO : Inject all waves into universe.
+		// DONE : Initiate a wave for each created body.
+		a_wave = new Wave( a_body );
+		waves.push_back( a_wave );
+	}
 }
 
 void Universe::GetWavesCoveringBody( Body* body, WaveVectorType& waveList )
@@ -201,4 +220,21 @@ Vector Universe::GetNewtonianGravity( Body* body, Wave* wave )
 
 	return gravityVector;
 }
+
+void Universe::DumpStats()
+{
+	static int iteration = 0;
+
+	if( iteration == 0 )
+	{
+		stats.numBodies = bodies.size();
+		stats.numWaves = waves.size();
+		stats.age = Universe::time;
+		printf( "bodies(%d), waves(%d), age(%.2f)\n", stats.numBodies, stats.numWaves, stats.age );
+	}
+
+	//iteration++;
+	//iteration %= 100;
+}
+
 
