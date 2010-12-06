@@ -9,14 +9,14 @@ Wave::Wave():conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
 
 // DONE : Constructor will use [body] instead of [center].
 // DONE : Constant [conLifetime] will be initialized.
-Wave::Wave( Body& body ):conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
+Wave::Wave( Body* body ):conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
 {
 	// DONE : Call [initVars] for general initialization.
 	initVars();
 	// DONE : Use [body] reference for special initialization.
-	source = body.Identifier();
-	mass = body.GetMass();
-	center = body.GetPosition();
+	source = body->Identifier();
+	mass = body->GetMass();
+	center = body->GetPosition();
 	radius = 0.0;
 }
 
@@ -58,5 +58,34 @@ void Wave::Update( double timeStep )
 bool Wave::IsAlive()
 {
 	return alive;
+}
+
+Vector& Wave::GetCenter()
+{
+	return center;
+}
+
+bool Wave::Covers( Body *body )
+{
+	Vector distance;
+
+	distance = body->GetPosition() - center;
+
+	return (~distance < radius);
+}
+
+unsigned int Wave::Source()
+{
+	return source;
+}
+
+Scalar Wave::Age()
+{
+	return age;
+}
+
+Scalar Wave::Mass()
+{
+	return mass;
 }
 

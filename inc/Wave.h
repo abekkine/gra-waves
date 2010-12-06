@@ -12,13 +12,18 @@ class Wave
 public:
 	Wave();
 	// DONE : Instead of center, use [body] reference to create wave instance.
-	Wave( Body& body );
+	Wave( Body* body );
 	// DONE : Wave initialization will be performed in universe, so change method below to void.
 	// DONE : All Update methods should accept [double timeStep] as parameter.
 	void Update( double timeStep );
 	~Wave();
 	// DONE : Method [IsAlive] will be added to check wave status.
 	bool IsAlive();
+	Vector& GetCenter();
+	bool Covers( Body *body );
+	unsigned int Source();
+	Scalar Age();
+	Scalar Mass();
 
 private:
 	// DONE : Constant [conLifetime] added to keep track of wave lifetime.
