@@ -1,12 +1,17 @@
 #ifndef UNIVERSE_H
 #define UNIVERSE_H
 
+#include <map>
 #include <vector>
 #include <Wave.h>
 
 #define UNIVERSE_RADIUS 1000.0
+#define GRAVITY_COEF 1.0
 
 using namespace std;
+
+typedef vector< Body * > BodyVectorType;
+typedef vector< Wave * > WaveVectorType;
 
 class Universe
 {
@@ -21,6 +26,7 @@ public:
 	void Initialize( int numBodies );
 
 private:
+	const Scalar conGravity;
 	// Radius of the universe; needed for body insertion.
 	Scalar radius;
 	int numBodies;
@@ -30,10 +36,14 @@ private:
 	double time;
 
 	// DONE : Add a storage variable to store bodies.
-	vector< Body * > bodies;
-	vector< Wave * > waves;
+	BodyVectorType bodies;
+	WaveVectorType waves;
 
 	void initVars();
+	void GetWavesCoveringBody( Body* body, WaveVectorType& waves );
+	void EliminateOlderWaves( WaveVectorType& waves );
+	Vector ComputeAccelerationVector( Body* body, WaveVectorType& waves );		
+	Vector GetNewtonianGravity( Body* body, Wave* wave );
 };
 
 #endif
