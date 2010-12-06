@@ -2,10 +2,14 @@
 0002 | CLOSED | Revision number will be embedded into application.
 0003 | CLOSED | version file and python bytecode will be added to ignore list.
 0004 | CLOSED | Version information will be displayed when application is run.
-0005 | OPEN | All methods will be pre-implemented with 'TODO' comment tag, which will be replaced with 'DONE' after completion.
+0005 | CLOSED | All methods will be pre-implemented with 'TODO' comment tag, which will be replaced with 'DONE' after completion.
 0006 | CLOSED | 'TODO' keyword in message body ('todo.txt') causes script to malfunction.
 0007 | CLOSED | Application crashes when run without a command line parameter. A default one must be defined.
-0008 | OPEN | All method pre-implementations should compile without warning.
+0008 | CLOSED | All method pre-implementations should compile without warning.
 0009 | CLOSED | Fix code to remove return value warning.
-0010 | OPEN | Files and code will be rearranged according to provided Algorithm document.
+0010 | CLOSED | Files and code will be rearranged according to provided Algorithm document.
 0011 | CLOSED | Build with highest warning level.
+0012 | OPEN | Simulation time display will be added.
+0013 | OPEN | Body count display will be added.
+0014 | OPEN | Wave count display will be added.
+0015 | OPEN | Relativistic Gravity Force calculation will be implemented.
