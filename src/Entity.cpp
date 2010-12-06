@@ -43,10 +43,9 @@ Vector& Entity::GetPosition()
 	return position;
 }
 
-void Entity::SetAcceleration( double x, double y, double z )
+void Entity::SetAcceleration( const Vector& acceleration )
 {
-	acceleration.x = x;
-	acceleration.y = y;
-	acceleration.z = z;
+	Entity::acceleration = acceleration;
 }
+
 

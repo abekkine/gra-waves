@@ -14,7 +14,7 @@ public:
 	unsigned int Identifier();
 	Scalar GetMass();
 	Vector& GetPosition();
-	void SetAcceleration( double x, double y, double z );
+	void SetAcceleration( const Vector& acceleration );
 
 protected:
 	unsigned int id;
