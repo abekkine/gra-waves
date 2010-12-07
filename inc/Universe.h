@@ -18,9 +18,6 @@ typedef struct
 
 } StatsType;
 
-typedef vector< Body * > BodyVectorType;
-typedef vector< Wave * > WaveVectorType;
-
 class Universe
 {
 public:
@@ -32,7 +29,10 @@ public:
 	void Update( double timeStep );
 	// DONE : Add number of bodies as a parameter to [Initialize] method.
 	void Initialize( int numBodies );
+    BodyVectorType& GetBodies();
+    WaveVectorType& GetWaves();
 	void DumpStats();
+    void DumpEnable( bool enable );
 
 private:
 	const Scalar conGravity;
@@ -43,6 +43,7 @@ private:
 	// DONE : Rename age variable to [time].
 	// DONE : Change type of variable to 'double'.
 	double time;
+    bool fDumpEnabled;
 
 	// DONE : Add a storage variable to store bodies.
 	BodyVectorType bodies;

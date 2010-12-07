@@ -1,6 +1,7 @@
 #ifndef WAVE_H
 #define WAVE_H
 
+#include <vector>
 #include <Vector.h>
 #include <Body.h>
 
@@ -24,6 +25,7 @@ public:
 	unsigned int Source();
 	Scalar Age();
 	Scalar Mass();
+    Scalar Radius();
 
 private:
 	// DONE : Constant [conLifetime] added to keep track of wave lifetime.
@@ -42,6 +44,8 @@ private:
 	void initVars();
 	
 };
+
+typedef std::vector< Wave * > WaveVectorType;
 
 #endif
 

@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "GraWaves.h"
 
 GraWaves::GraWaves( int numBodies )
@@ -42,10 +43,12 @@ void GraWaves::Update( double timeStep )
 
 void GraWaves::Initialize()
 {
+    srand( time(0) );
+
 	timer = new Timer();
 	display = new Renderer();
 
-	display->SetScreenSize( 200, 200 );
+	display->SetScreenSize( 500, 500 );
 	display->Init();
 
 	timer->Reset();
@@ -55,6 +58,9 @@ void GraWaves::Initialize()
 	//DEBUG
 	printf( "GraWaves::Initialize() universe of %d bodies.\n", numBodies );
 	universe->Initialize( numBodies );
+
+    display->RegisterBodies( universe->GetBodies() );
+    display->RegisterWaves( universe->GetWaves() );
 }
 
 // DONE : Remove [ReadKey] method.
@@ -64,11 +70,11 @@ void GraWaves::Run()
 {
 	while( not quitCondition )
 	{
-		//numTicks = timer->GetElapsed();
-		//if( numTicks > 500000 )
+		numTicks = timer->GetElapsed();
+		if( numTicks > 50000 )
 		{
 			// DONE : [Update] method call should include [timeStep] value as parameter.
-			Update( 0.1 );
+			Update( 1.0 );
 			timer->Reset();
 		}
 

@@ -91,3 +91,8 @@ Scalar Wave::Mass()
 	return mass;
 }
 
+Scalar Wave::Radius()
+{
+    return radius;
+}
+

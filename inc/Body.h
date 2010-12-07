@@ -2,6 +2,7 @@
 #define BODY_H
 
 #include <stdlib.h>
+#include <vector>
 #include <Entity.h>
 
 class Body : public Entity {
@@ -18,6 +19,8 @@ private:
 	void initVars();
 	double RandomBetween( double min, double max );
 };
+
+typedef std::vector< Body * > BodyVectorType;
 
 #endif
 
