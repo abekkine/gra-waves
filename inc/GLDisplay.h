@@ -11,6 +11,7 @@ class GLDisplay {
         ~GLDisplay();
         
         void SetScreenSize( int width, int height );
+        void SetViewport( double left, double right, double bottom, double top, double near=-1.0, double far=1.0 );
         bool Init();
         void PreRender();
         void PostRender();
@@ -39,6 +40,12 @@ class GLDisplay {
         float bgGreen;
         float bgBlue;
         float bgAlpha;
+        double vpLeft;
+        double vpRight;
+        double vpBottom;
+        double vpTop;
+        double vpNear;
+        double vpFar;
 
         // Methods.
         void InitVars();

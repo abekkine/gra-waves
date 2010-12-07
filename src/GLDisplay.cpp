@@ -15,6 +15,12 @@ void GLDisplay::InitVars()
     m_screen_height = -1;
     bgRed = bgGreen = bgBlue = 0.0;
     bgAlpha = 1.0;
+    vpLeft = -100.0;
+    vpRight = 100.0;
+    vpBottom = -100.0;
+    vpTop = 100.0;
+    vpNear = -1.0;
+    vpFar = 1.0;
 }
 
 void GLDisplay::SetScreenSize( int width, int height )
@@ -111,7 +117,7 @@ void GLDisplay::Reshape(int width, int height)
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
 
-    glOrtho( 0.0f, width, height, 0.0f, -1.0f, 1.0f );
+    glOrtho( vpLeft, vpRight, vpBottom, vpTop, vpNear, vpFar );
 
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
@@ -209,3 +215,17 @@ void GLDisplay::SetBGAlpha( float alpha )
     bgAlpha = alpha;
 }
 
+void GLDisplay::SetViewport( double left, double right, double bottom, double top, double near, double far )
+{
+    vpLeft = left;
+    vpRight = right;
+    vpBottom = bottom;
+    vpTop = top;
+    vpNear = near;
+    vpFar = far;
+
+    if( m_screen != NULL )
+    {
+        Reshape(m_screen->w, m_screen->h);
+    }
+}

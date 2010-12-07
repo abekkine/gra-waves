@@ -61,6 +61,7 @@ void GraWaves::Initialize()
 
     display->SetBGColor( config->display_bgcolor );
     display->SetScreenSize( config->display_screen_width, config->display_screen_height );
+    display->SetViewport( -config->universe_radius, config->universe_radius, -config->universe_radius, config->universe_radius );
     display->Init();
     display->BodyDisplay( (config->body_display)!=0 );
     display->SetBodyColor( config->body_color );

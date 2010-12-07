@@ -15,7 +15,7 @@
 0015 | OPEN | Relativistic Gravity Force calculation will be implemented.
 0016 | CLOSED | Body visualization should be implemented.
 0017 | CLOSED | Wave visualization should be implemented.
-0018 | OPEN | Display viewport should be adjusted to show whole universe.
+0018 | CLOSED | Display viewport should be adjusted to show whole universe.
 0019 | CLOSED | Critical constants/coefficients should be read from a configuration file.
 0020 | OPEN | BUG: Bodies do not emit waves regularly.
 0021 | OPEN | BUG: A wave with much bigger than others, originating from (0,0) displayed.
