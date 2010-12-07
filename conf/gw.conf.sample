@@ -17,8 +17,10 @@ gwaves =
             height = 500;
         };
 
-        // Background color.
-        bgcolor = 0x00000000;
+        // Background color. 
+        // Color format, in hex; 
+        //        0xRRGGBB
+        bgcolor = 0x000000;
     };
 
     // Body configuration.
@@ -27,6 +29,7 @@ gwaves =
         // default mass.
         mass = 100.0;
         display = 1;
+        //      0xRRGGBB
         color = 0xffffff;
     };
 
@@ -36,7 +39,8 @@ gwaves =
         speed = 1.0;
         lifetime = 100.0;
         display = 1;
-        color = 0x0000ff;
+        //      0xRRGGBB
+        color = 0x0080ff;
     };
 
     // Universe configuration.

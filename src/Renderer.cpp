@@ -7,6 +7,10 @@ Renderer::Renderer()
     fBodyDisplayEnable = true;
     fWavesAvailable = false;
     fWaveDisplayEnable = false;
+
+    bodyRed = bodyGreen = bodyBlue = 1.0;
+    waveRed = waveGreen = 0.0;
+    waveBlue = 1.0;
 }
 
 void Renderer::Render()
@@ -39,17 +43,17 @@ void Renderer::RenderBodies()
     BodyVectorType::iterator iBody;
     Vector pos;
 
-	glColor3f( 1.0, 1.0, 1.0 );
-	glPointSize( 2.0 );
-	glBegin( GL_POINTS );
+    glColor3f( bodyRed, bodyGreen, bodyBlue );
+    glPointSize( 2.0 );
+    glBegin( GL_POINTS );
 
         for( iBody=bodies.begin(); iBody!=bodies.end(); ++iBody )
         {
             pos =(*iBody)->GetPosition();
-    		glVertex2d( pos.x, pos.y );
+            glVertex2d( pos.x, pos.y );
         }
 
-	glEnd();
+    glEnd();
 
 }
 
@@ -71,17 +75,17 @@ void Renderer::RenderWaves()
 
 void Renderer::RenderSingleWave( Vector center, double radius, double age )
 {
+    double theta;
     double alpha;
-    double color;
 
-    color = (Wave::WAVE_LIFETIME - age)/Wave::WAVE_LIFETIME;
+    alpha = (Wave::WAVE_LIFETIME - age)/Wave::WAVE_LIFETIME;
 
-    glColor4f( 0.0, 0.0, 1.0, color );
+    glColor4f( waveRed, waveGreen, waveBlue, alpha );
     //glBegin( GL_POLYGON );
     glBegin( GL_LINE_STRIP );
-        for( alpha=0.0; alpha<2.0*M_PI; alpha+=0.1*M_PI )
+        for( theta=0.0; theta<2.0*M_PI; theta+=0.1*M_PI )
         {
-            glVertex2d( center.x + radius * cos(alpha), center.y + radius * sin(alpha) );
+            glVertex2d( center.x + radius * cos(theta), center.y + radius * sin(theta) );
         }
         glVertex2d( center.x + radius, center.y );
     glEnd();
@@ -95,5 +99,22 @@ void Renderer::BodyDisplay( bool enable )
 void Renderer::WaveDisplay( bool enable )
 {
     fWaveDisplayEnable = enable;
+}
+
+void Renderer::SetBodyColor( unsigned int color )
+{
+    ConvertColor( color, bodyRed, bodyGreen, bodyBlue );
+}
+
+void Renderer::SetWaveColor( unsigned int color )
+{
+    ConvertColor( color, waveRed, waveGreen, waveBlue );
+}
+
+void Renderer::ConvertColor( unsigned int rgb, float& r, float& g, float& b )
+{
+    r = ( (rgb>>16) & 0xff ) / 255.0;
+    g = ( (rgb>>8) & 0xff ) / 255.0;
+    b = ( rgb & 0xff ) / 255.0;
 }
 

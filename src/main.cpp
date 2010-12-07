@@ -6,23 +6,23 @@
 
 int main( int argc, char *argv[] )
 {
-	int numBodies = NUM_BODIES;
+    int numBodies = NUM_BODIES;
 
-	// Display version information.
-	printf( "Hg.%s\n", VERSION_STRING );
+    // Display version information.
+    printf( "Hg.%s\n", VERSION_STRING );
 
-	if( argc == 2 )
-	{
-		numBodies = atoi( argv[1] );
-	}
+    if( argc == 2 )
+    {
+        numBodies = atoi( argv[1] );
+    }
 
-	GraWaves* gWaves = new GraWaves( numBodies );
+    GraWaves* gWaves = new GraWaves( numBodies );
 
-	gWaves->Initialize();
+    gWaves->Initialize();
 
-	gWaves->Run();
+    gWaves->Run();
 
-	return 0;
+    return 0;
 }
 
 

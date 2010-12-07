@@ -11,7 +11,7 @@ TARGET_NAME = 'grawvs'
 env = Environment()
 
 if not env.GetOption( 'clean' ):
-	revlib.getRevisionString( os.path.abspath( '.' ), VERSION_INC )
+    revlib.getRevisionString( os.path.abspath( '.' ), VERSION_INC )
 
 clean_files = []
 clean_files.append( '.sconsign.dblite' )

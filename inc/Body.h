@@ -8,16 +8,16 @@
 class Body : public Entity {
 
 public:
-	Body();
-	~Body();
-	void AtRandom( Scalar radius );
-	// DONE : Method [SetAcceleration] will be declared. (Defined in Entity).
-	// DONE : [Update] method should accept [double timeStep] parameter.
-	void Update( double timeStep );
+    Body();
+    ~Body();
+    void AtRandom( Scalar radius );
+    // DONE : Method [SetAcceleration] will be declared. (Defined in Entity).
+    // DONE : [Update] method should accept [double timeStep] parameter.
+    void Update( double timeStep );
 
 private:
-	void initVars();
-	double RandomBetween( double min, double max );
+    void initVars();
+    double RandomBetween( double min, double max );
 };
 
 typedef std::vector< Body * > BodyVectorType;

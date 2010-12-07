@@ -7,15 +7,23 @@
 
 class Renderer : public GLDisplay {
 
-	public:
+    public:
         Renderer();
-		void Render();
+        void Render();
         void RegisterBodies( BodyVectorType& bodies );
         void RegisterWaves( WaveVectorType& waves );
         void BodyDisplay( bool enable );
         void WaveDisplay( bool enable );
+        void SetBodyColor( unsigned int color );
+        void SetWaveColor( unsigned int color );
 
     private:
+        float bodyRed;
+        float bodyGreen;
+        float bodyBlue;
+        float waveRed;
+        float waveGreen;
+        float waveBlue;
         bool fBodiesAvailable;
         bool fBodyDisplayEnable;
         BodyVectorType bodies;
@@ -26,6 +34,7 @@ class Renderer : public GLDisplay {
         void RenderBodies();
         void RenderWaves();
         void RenderSingleWave( Vector center, double radius, double age );
+        void ConvertColor( unsigned int rgb, float& r, float& g, float& b );
 
 };
 
