@@ -42,6 +42,7 @@ void Universe::initVars()
 	waves.clear();
 
 	// Stats
+    fDumpEnabled = false;
 	stats.numBodies = 0;
 	stats.numWaves = 0;
 	stats.age = 0.0;
@@ -221,20 +222,38 @@ Vector Universe::GetNewtonianGravity( Body* body, Wave* wave )
 	return gravityVector;
 }
 
+void Universe::DumpEnable( bool enable )
+{
+    fDumpEnabled = enable;
+}
+
 void Universe::DumpStats()
 {
-	static int iteration = 0;
+    if( fDumpEnabled )
+    {
+    	static int iteration = 0;
+    
+	    if( iteration == 0 )
+    	{
+	    	stats.numBodies = bodies.size();
+		    stats.numWaves = waves.size();
+    		stats.age = Universe::time;
+	    	printf( "bodies(%d), waves(%d), age(%.2f)\n", stats.numBodies, stats.numWaves, stats.age );
+    	}
 
-	if( iteration == 0 )
-	{
-		stats.numBodies = bodies.size();
-		stats.numWaves = waves.size();
-		stats.age = Universe::time;
-		printf( "bodies(%d), waves(%d), age(%.2f)\n", stats.numBodies, stats.numWaves, stats.age );
-	}
+	    //iteration++;
+    	//iteration %= 100;
+    }
+}
 
-	//iteration++;
-	//iteration %= 100;
+BodyVectorType& Universe::GetBodies()
+{
+    return bodies;
+}
+
+WaveVectorType& Universe::GetWaves()
+{
+    return waves;
 }
 
 
