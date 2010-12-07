@@ -91,6 +91,7 @@ void Universe::Update( double timeStep )
         waves.push_back( new_wave );
     }
 
+
     WaveVectorType waveList;    
     Body *theBody;
     Vector bodyAcceleration;
@@ -122,7 +123,7 @@ void Universe::Initialize()
     // DONE : Inject all waves into universe.
     for( int i=0; i<Universe::numBodies; i++ )
     {
-        a_body = new Body();
+        a_body = new Body( i );
         a_body->AtRandom( radius );
         bodies.push_back( a_body );
 
@@ -192,7 +193,7 @@ Vector Universe::ComputeAccelerationVector( Body* body, WaveVectorType& waveList
     Vector acceleration;
     WaveVectorType::iterator iWave;
     Wave *theWave;
-    
+
     acceleration.Set( 0.0, 0.0, 0.0 );
     for( iWave=waveList.begin(); iWave!=waveList.end(); ++iWave )
     {
@@ -242,8 +243,8 @@ void Universe::DumpStats()
             printf( "bodies(%d), waves(%d), age(%.2f)\n", stats.numBodies, stats.numWaves, stats.age );
         }
 
-        //iteration++;
-        //iteration %= 100;
+        iteration++;
+        iteration %= 100;
     }
 }
 

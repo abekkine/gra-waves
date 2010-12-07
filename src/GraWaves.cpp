@@ -102,6 +102,7 @@ void GraWaves::Run()
             // DONE : [Update] method call should include [timeStep] value as parameter.
             Update( config->general_timestep );
             timer->Reset();
+            display->RegisterWaves( universe->GetWaves() );
         }
 
         display->Update();

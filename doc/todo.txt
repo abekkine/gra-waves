@@ -17,6 +17,11 @@
 0017 | CLOSED | Wave visualization should be implemented.
 0018 | CLOSED | Display viewport should be adjusted to show whole universe.
 0019 | CLOSED | Critical constants/coefficients should be read from a configuration file.
-0020 | OPEN | BUG: Bodies do not emit waves regularly.
-0021 | OPEN | BUG: A wave with much bigger than others, originating from (0,0) displayed.
+0020 | CLOSED | BUG: Bodies do not emit waves regularly.
+0021 | CLOSED | BUG: A wave with much bigger than others, originating from (0,0) displayed.
 0022 | OPEN | Time frame, body/wave counts should be displayed on graphical window.
+0023 | OPEN | BUG: Some neighbor bodies seem do not affect each other.
+0024 | OPEN | Simulation Control PAUSE/RESUME feature should be implemented.
+0025 | OPEN | Viewport Control ZOOM-IN/ZOOM-OUT/PAN features should be implemented.
+0026 | OPEN | Simulation Control STEP feature should be implemented.
+0027 | OPEN | Simulation Control SAVE/LOAD feature should be implemented.

@@ -1,9 +1,11 @@
+#include <stdio.h>
 #include <Body.h>
 
-Body::Body()
+Body::Body( int id )
 {
     // DONE : Method [initVars] should be called.
     initVars();
+    Body::id = id;
 }
 
 Body::~Body()
@@ -29,7 +31,6 @@ void Body::Update( double timeStep )
     position.x += timeStep * velocity.x;
     position.y += timeStep * velocity.y;
     position.z += timeStep * velocity.z;
-    
 }
 
 double Body::RandomBetween( double min, double max )

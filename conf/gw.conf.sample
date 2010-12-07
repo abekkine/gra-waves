@@ -4,7 +4,7 @@ gwaves =
     general = 
     {
         frequency = 20;
-        timestep = 1.0;
+        timestep = 4.0;
     };
 
     // Display configuration.
@@ -27,7 +27,7 @@ gwaves =
     body =
     {
         // default mass.
-        mass = 100.0;
+        mass = 500.0;
         display = 1;
         //      0xRRGGBB
         color = 0xffffff;
@@ -36,7 +36,7 @@ gwaves =
     // Wave configuration.
     wave = 
     {
-        speed = 1.0;
+        speed = 5.0;
         lifetime = 100.0;
         display = 1;
         //      0xRRGGBB
