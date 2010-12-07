@@ -61,12 +61,12 @@ void GraWaves::Initialize()
 
     display->SetBGColor( config->display_bgcolor );
     display->SetScreenSize( config->display_screen_width, config->display_screen_height );
-    display->SetViewport( -config->universe_radius, config->universe_radius, -config->universe_radius, config->universe_radius );
     display->Init();
     display->BodyDisplay( (config->body_display)!=0 );
     display->SetBodyColor( config->body_color );
     display->WaveDisplay( (config->wave_display)!=0 );
     display->SetWaveColor( config->wave_color );
+    display->SetViewport( -config->universe_radius, config->universe_radius, -config->universe_radius, config->universe_radius );
 
     // calculate ticks number corresponding correct period of time.
     if( config->general_frequency > 0 )
@@ -83,6 +83,7 @@ void GraWaves::Initialize()
     universe = new Universe();
     universe->Radius( config->universe_radius );
     universe->NumBodies( config->universe_num_bodies );
+    universe->DeadZone( config->universe_deadzone );
     universe->Initialize();
 
     display->RegisterBodies( universe->GetBodies() );

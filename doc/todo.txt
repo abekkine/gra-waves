@@ -25,3 +25,10 @@
 0025 | OPEN | Viewport Control ZOOM-IN/ZOOM-OUT/PAN features should be implemented.
 0026 | OPEN | Simulation Control STEP feature should be implemented.
 0027 | OPEN | Simulation Control SAVE/LOAD feature should be implemented.
+0028 | CLOSED | Dead zone threshold distance for gravity force should be configurable.
+0029 | OPEN | A highlight option for any selected body and its covering waves should be implemented.
+0030 | OPEN | Auto pan/zoom option (pan: follow center of gravity, zoom: major mass distribution) should be implemented.
+0031 | OPEN | Date/Time information (open/close) would be useful in todo list.
+0032 | OPEN | Todo list statistics should be added to completion report script.
+0033 | OPEN | Configurable font support should be added to display class.
+0034 | OPEN | Custom keypress methods should be implemented.

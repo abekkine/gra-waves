@@ -29,6 +29,7 @@ public:
 
     void Radius( Scalar radius );
     void NumBodies( int numBodies );
+    void DeadZone( Scalar distance );
 
     BodyVectorType& GetBodies();
     WaveVectorType& GetWaves();
@@ -48,6 +49,7 @@ private:
     // DONE : Change type of variable to 'double'.
     double time;
     bool fDumpEnabled;
+    Scalar deadzone;
 
     // DONE : Add a storage variable to store bodies.
     BodyVectorType bodies;

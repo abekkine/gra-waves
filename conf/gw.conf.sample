@@ -3,8 +3,8 @@ gwaves =
     // General settings.
     general = 
     {
-        frequency = 20;
-        timestep = 4.0;
+        frequency = 0;
+        timestep = 0.5;
     };
 
     // Display configuration.
@@ -36,8 +36,8 @@ gwaves =
     // Wave configuration.
     wave = 
     {
-        speed = 5.0;
-        lifetime = 100.0;
+        speed = 40.0;
+        lifetime = 10.0;
         display = 1;
         //      0xRRGGBB
         color = 0x0080ff;
@@ -49,6 +49,7 @@ gwaves =
         radius = 1000.0;
         gravity_con = 1.0;
         num_bodies = 10;
+        deadzone = 100.0;
     };
     
 };

@@ -39,6 +39,7 @@ public:
     double universe_radius;
     double universe_gravity_con;
     int universe_num_bodies;
+    double universe_deadzone;
 };
 
 #endif

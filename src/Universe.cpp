@@ -215,11 +215,17 @@ Vector Universe::GetNewtonianGravity( Body* body, Wave* wave )
 
     distanceVector = wave->GetCenter() - body->GetPosition();
     distance = ~distanceVector;
-    squareDistance = distance * distance;
 
-    gravityForce = Universe::conGravity * wave->Mass() / squareDistance;
-
-    gravityVector = (!distanceVector) * gravityForce;
+    if( distance > deadzone )
+    {
+        squareDistance = distance * distance;
+        gravityForce = Universe::conGravity * wave->Mass() / squareDistance;
+        gravityVector = (!distanceVector) * gravityForce;
+    }
+    else
+    {
+        gravityVector.Set( 0.0, 0.0, 0.0 );
+    }
 
     return gravityVector;
 }
@@ -268,4 +274,8 @@ void Universe::NumBodies( int numBodies )
     Universe::numBodies = numBodies;
 }
 
+void Universe::DeadZone( Scalar distance )
+{
+    Universe::deadzone = distance;
+}
 
