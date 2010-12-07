@@ -15,3 +15,8 @@
 0015 | OPEN | Relativistic Gravity Force calculation will be implemented.
 0016 | OPEN | Body visualization should be implemented.
 0017 | OPEN | Wave visualization should be implemented.
+0018 | OPEN | Display viewport should be adjusted to show whole universe.
+0019 | OPEN | Critical constants/coefficients should be read from a configuration file.
+0020 | OPEN | BUG: Bodies do not emit waves regularly.
+0021 | OPEN | BUG: A wave with much bigger than others, originating from (0,0) displayed.
+0022 | OPEN | Time frame, body/wave counts should be displayed on graphical window.
