@@ -13,6 +13,8 @@ void GLDisplay::InitVars()
 {
     m_screen_width = -1;
     m_screen_height = -1;
+    bgRed = bgGreen = bgBlue = 0.0;
+    bgAlpha = 1.0;
 }
 
 void GLDisplay::SetScreenSize( int width, int height )
@@ -90,7 +92,7 @@ bool GLDisplay::CheckQuit()
 void GLDisplay::GL_Init()
 {
     glShadeModel( GL_SMOOTH );
-    glClearColor( 0.0f, 0.0f, 0.0f, 0.5f );
+    glClearColor( bgRed, bgGreen, bgBlue, bgAlpha );
     glClearDepth( 1.0f );
     glHint( GL_LINE_SMOOTH_HINT, GL_NICEST );
     glEnable( GL_BLEND );
@@ -188,5 +190,22 @@ void GLDisplay::ProcessKeys( SDL_Event &event )
         case 'p':
             break;
     }
+}
+
+void GLDisplay::ConvertColor( unsigned int rgb, float& r, float& g, float& b )
+{
+    r = ( (rgb>>16) & 0xff ) / 255.0;
+    g = ( (rgb>>8) & 0xff ) / 255.0;
+    b = ( rgb & 0xff ) / 255.0;
+}
+
+void GLDisplay::SetBGColor( unsigned int color )
+{
+    ConvertColor( color, bgRed, bgGreen, bgBlue );
+}
+
+void GLDisplay::SetBGAlpha( float alpha )
+{
+    bgAlpha = alpha;
 }
 

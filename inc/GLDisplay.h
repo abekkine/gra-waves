@@ -21,6 +21,12 @@ class GLDisplay {
         bool PollEvents();
         bool CheckKeyPress( int key );
         int GetKey();
+        void SetBGColor( unsigned int color );
+        void SetBGAlpha( float alpha );
+
+    protected:
+        void ConvertColor( unsigned int rgb, float& r, float& g, float& b );
+        
     
     private:
         int m_keyCode;
@@ -29,6 +35,10 @@ class GLDisplay {
         SDL_Surface *m_screen;
         int m_screen_width;
         int m_screen_height;
+        float bgRed;
+        float bgGreen;
+        float bgBlue;
+        float bgAlpha;
 
         // Methods.
         void InitVars();

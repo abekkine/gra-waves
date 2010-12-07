@@ -59,6 +59,7 @@ void GraWaves::Initialize()
     Wave::WAVE_SPEED = config->wave_speed;
     Universe::GRAVITY_COEF = config->universe_gravity_con;
 
+    display->SetBGColor( config->display_bgcolor );
     display->SetScreenSize( config->display_screen_width, config->display_screen_height );
     display->Init();
     display->BodyDisplay( (config->body_display)!=0 );

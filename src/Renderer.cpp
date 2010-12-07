@@ -111,10 +111,3 @@ void Renderer::SetWaveColor( unsigned int color )
     ConvertColor( color, waveRed, waveGreen, waveBlue );
 }
 
-void Renderer::ConvertColor( unsigned int rgb, float& r, float& g, float& b )
-{
-    r = ( (rgb>>16) & 0xff ) / 255.0;
-    g = ( (rgb>>8) & 0xff ) / 255.0;
-    b = ( rgb & 0xff ) / 255.0;
-}
-

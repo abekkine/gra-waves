@@ -34,7 +34,6 @@ class Renderer : public GLDisplay {
         void RenderBodies();
         void RenderWaves();
         void RenderSingleWave( Vector center, double radius, double age );
-        void ConvertColor( unsigned int rgb, float& r, float& g, float& b );
 
 };
 
