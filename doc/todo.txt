@@ -13,3 +13,5 @@
 0013 | OPEN | Body count display will be added.
 0014 | OPEN | Wave count display will be added.
 0015 | OPEN | Relativistic Gravity Force calculation will be implemented.
+0016 | OPEN | Body visualization should be implemented.
+0017 | OPEN | Wave visualization should be implemented.
