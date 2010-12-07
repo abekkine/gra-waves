@@ -4,3 +4,4 @@ syntax: glob
 inc/version.h
 .*.swp
 *.o
+*.conf

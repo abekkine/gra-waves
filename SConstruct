@@ -24,6 +24,7 @@ env.ParseConfig( 'sdl-config --cflags --libs' )
 env.Append( CPPFLAGS = [ '-g', '-Wall',  '-Wextra' ] )
 env.Append( CPPPATH = [ 'inc' ] )
 env.Append( LIBS = [ 'GL' ] )
+env.Append( LIBS = [ 'config' ] )
 
 files = Glob( 'src/*.cpp' )
 

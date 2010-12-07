@@ -1,0 +1,51 @@
+gwaves = 
+{
+    // General settings.
+    general = 
+    {
+        frequency = 20;
+        timestep = 1.0;
+    };
+
+    // Display configuration.
+    display = 
+    {
+        // Screen dimensions.
+        screen = 
+        {
+            width = 500;
+            height = 500;
+        };
+
+        // Background color.
+        bgcolor = 0x00000000;
+    };
+
+    // Body configuration.
+    body =
+    {
+        // default mass.
+        mass = 100.0;
+        display = 1;
+        color = 0xffffff;
+    };
+
+    // Wave configuration.
+    wave = 
+    {
+        speed = 1.0;
+        lifetime = 100.0;
+        display = 1;
+        color = 0x0000ff;
+    };
+
+    // Universe configuration.
+    universe =
+    {
+        radius = 1000.0;
+        gravity_con = 1.0;
+        num_bodies = 10;
+    };
+    
+};
+
