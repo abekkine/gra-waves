@@ -5,9 +5,6 @@
 #include <vector>
 #include <Wave.h>
 
-#define UNIVERSE_RADIUS 1000.0
-#define GRAVITY_COEF 1.0
-
 using namespace std;
 
 typedef struct
@@ -28,11 +25,18 @@ public:
 	// DONE : All [Update] methods should accept [double timeStep] as parameter.
 	void Update( double timeStep );
 	// DONE : Add number of bodies as a parameter to [Initialize] method.
-	void Initialize( int numBodies );
+	void Initialize();
+
+    void Radius( Scalar radius );
+    void NumBodies( int numBodies );
+
     BodyVectorType& GetBodies();
     WaveVectorType& GetWaves();
 	void DumpStats();
     void DumpEnable( bool enable );
+
+public:
+    static Scalar GRAVITY_COEF;
 
 private:
 	const Scalar conGravity;

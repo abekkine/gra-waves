@@ -5,9 +5,6 @@
 #include <Vector.h>
 #include <Body.h>
 
-#define WAVE_SPEED 1.0
-#define WAVE_LIFE 100.0
-
 class Wave
 {
 public:
@@ -27,12 +24,15 @@ public:
 	Scalar Mass();
     Scalar Radius();
 
+public:
+    static Scalar WAVE_LIFETIME;
+    static Scalar WAVE_SPEED;
 private:
 	// DONE : Constant [conLifetime] added to keep track of wave lifetime.
 	const Scalar conLifetime;
+	const Scalar conSpeed;
 	// DONE : Member [alive] should be added to indicate wave is active.
 	bool alive;
-	const Scalar conSpeed;
 	// DONE : Rename 'id' as [source] to indicate inducing [body] id.
 	unsigned int source;
 	// DONE : Rename 'frame' to [age], used as sim_time.

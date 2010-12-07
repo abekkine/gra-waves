@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <Universe.h>
 
+Scalar Universe::GRAVITY_COEF = 1.0;
+
 Universe::Universe() : conGravity( GRAVITY_COEF )
 {
 	// DONE : Constant member [conSize] should be removed from this class.
@@ -35,7 +37,7 @@ Universe::~Universe()
 void Universe::initVars()
 {
 	// DONE : All member variables should be reset in this method.
-	radius = UNIVERSE_RADIUS;
+	radius = 0;
 	numBodies = 0;
 	time = 0.0;
 	bodies.clear();
@@ -111,18 +113,17 @@ void Universe::Update( double timeStep )
 }
 
 // DONE : Universe::Initialize( n ) method should be initialized.
-void Universe::Initialize( int numBodies )
+void Universe::Initialize()
 {
 	Body* a_body;
 	Wave* a_wave;
-	Universe::numBodies = numBodies;
 
 	// DONE : Inject all bodies into universe.
 	// DONE : Inject all waves into universe.
 	for( int i=0; i<Universe::numBodies; i++ )
 	{
 		a_body = new Body();
-		a_body->AtRandom( UNIVERSE_RADIUS );
+		a_body->AtRandom( radius );
 		bodies.push_back( a_body );
 
 		// DONE : Initiate a wave for each created body.
@@ -254,6 +255,16 @@ BodyVectorType& Universe::GetBodies()
 WaveVectorType& Universe::GetWaves()
 {
     return waves;
+}
+
+void Universe::Radius( Scalar radius )
+{
+    Universe::radius = radius;
+}
+
+void Universe::NumBodies( int numBodies )
+{
+    Universe::numBodies = numBodies;
 }
 
 

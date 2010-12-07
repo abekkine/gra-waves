@@ -12,11 +12,15 @@ class Renderer : public GLDisplay {
 		void Render();
         void RegisterBodies( BodyVectorType& bodies );
         void RegisterWaves( WaveVectorType& waves );
+        void BodyDisplay( bool enable );
+        void WaveDisplay( bool enable );
 
     private:
         bool fBodiesAvailable;
+        bool fBodyDisplayEnable;
         BodyVectorType bodies;
         bool fWavesAvailable;
+        bool fWaveDisplayEnable;
         WaveVectorType waves;
 
         void RenderBodies();

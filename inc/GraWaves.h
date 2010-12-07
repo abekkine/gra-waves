@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <Timer.h>
+#include <Config.h>
 #include <Renderer.h>
 #include <Universe.h>
 
@@ -23,11 +24,13 @@ class GraWaves
 
 	private:
 		int numBodies;
+        Config *config;
 		Universe *universe;
 		Renderer *display;
 		// DONE : remove key input related variables.
 		bool quitCondition;
 		unsigned int numTicks;
+        unsigned int ticksPeriod;
 		Timer *timer;
 		void initVars();
 };

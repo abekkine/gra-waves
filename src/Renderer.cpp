@@ -4,17 +4,19 @@
 Renderer::Renderer()
 {
     fBodiesAvailable = false;
+    fBodyDisplayEnable = true;
     fWavesAvailable = false;
+    fWaveDisplayEnable = false;
 }
 
 void Renderer::Render()
 {
-    if( fBodiesAvailable )
+    if( fBodiesAvailable && fBodyDisplayEnable )
     {
         RenderBodies();
     }
 
-    if( fWavesAvailable )
+    if( fWavesAvailable && fWaveDisplayEnable )
     {
         RenderWaves();
     }
@@ -72,7 +74,7 @@ void Renderer::RenderSingleWave( Vector center, double radius, double age )
     double alpha;
     double color;
 
-    color = (100.0 - age)/100.0;
+    color = (Wave::WAVE_LIFETIME - age)/Wave::WAVE_LIFETIME;
 
     glColor4f( 0.0, 0.0, 1.0, color );
     //glBegin( GL_POLYGON );
@@ -83,5 +85,15 @@ void Renderer::RenderSingleWave( Vector center, double radius, double age )
         }
         glVertex2d( center.x + radius, center.y );
     glEnd();
+}
+
+void Renderer::BodyDisplay( bool enable )
+{
+    fBodyDisplayEnable = enable;
+}
+
+void Renderer::WaveDisplay( bool enable )
+{
+    fWaveDisplayEnable = enable;
 }
 

@@ -1,5 +1,7 @@
 #include <Entity.h>
 
+Scalar Entity::DEFAULT_MASS = 1.0;
+
 Entity::Entity()
 {
 	// DONE : Call [initVars] method.

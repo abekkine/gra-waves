@@ -1,8 +1,11 @@
 #include <stdio.h>
 #include <Wave.h>
 
+Scalar Wave::WAVE_LIFETIME = 1.0;
+Scalar Wave::WAVE_SPEED = 1.0;
+
 // DONE : Constant [conLifetime] will be initialized.
-Wave::Wave():conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
+Wave::Wave():conLifetime( WAVE_LIFETIME ),conSpeed( WAVE_SPEED )
 {
 	// DONE : Call [initVars] for general initialization.
 	initVars();
@@ -10,7 +13,7 @@ Wave::Wave():conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
 
 // DONE : Constructor will use [body] instead of [center].
 // DONE : Constant [conLifetime] will be initialized.
-Wave::Wave( Body* body ):conLifetime( WAVE_LIFE ),conSpeed( WAVE_SPEED )
+Wave::Wave( Body* body ):conLifetime( WAVE_LIFETIME ),conSpeed( WAVE_SPEED )
 {
 	// DONE : Call [initVars] for general initialization.
 	initVars();

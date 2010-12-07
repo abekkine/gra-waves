@@ -3,8 +3,6 @@
 
 #include <Vector.h>
 
-#define DEFAULT_MASS 100.0
-
 class Entity 
 {
 public:
@@ -15,6 +13,9 @@ public:
 	Scalar GetMass();
 	Vector& GetPosition();
 	void SetAcceleration( const Vector& acceleration );
+
+public:
+    static Scalar DEFAULT_MASS;
 
 protected:
 	unsigned int id;

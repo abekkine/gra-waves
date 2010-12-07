@@ -21,6 +21,7 @@ GraWaves::~GraWaves()
 	delete display;
 	// DONE : Delete [universe] resource.
 	delete universe;
+    delete config;
 }
 
 void GraWaves::initVars()
@@ -31,6 +32,7 @@ void GraWaves::initVars()
 	numTicks = 0;
 	// DONE : Initialize [universe] to NULL.
 	universe = NULL;
+    config = NULL;
 }
 
 // DONE : All [Update] methods should accept [double timeStep] as parameter.
@@ -45,19 +47,39 @@ void GraWaves::Initialize()
 {
     srand( time(0) );
 
+    config = new Config();
 	timer = new Timer();
 	display = new Renderer();
 
-	display->SetScreenSize( 500, 500 );
-	display->Init();
+    config->Read( "../conf/gw.conf" );
 
+    // Setup class constants
+    Entity::DEFAULT_MASS = config->body_mass;
+    Wave::WAVE_LIFETIME = config->wave_lifetime;
+    Wave::WAVE_SPEED = config->wave_speed;
+    Universe::GRAVITY_COEF = config->universe_gravity_con;
+
+	display->SetScreenSize( config->display_screen_width, config->display_screen_height );
+	display->Init();
+    display->BodyDisplay( (config->body_display)!=0 );
+    display->WaveDisplay( (config->wave_display)!=0 );
+
+    // calculate ticks number corresponding correct period of time.
+    if( config->general_frequency > 0 )
+    {
+        ticksPeriod = 1000000 / config->general_frequency;
+    }
+    else
+    {
+        ticksPeriod = 0;
+    }
 	timer->Reset();
 
 	// DONE : Initialize [universe].
 	universe = new Universe();
-	//DEBUG
-	printf( "GraWaves::Initialize() universe of %d bodies.\n", numBodies );
-	universe->Initialize( numBodies );
+    universe->Radius( config->universe_radius );
+    universe->NumBodies( config->universe_num_bodies );
+	universe->Initialize();
 
     display->RegisterBodies( universe->GetBodies() );
     display->RegisterWaves( universe->GetWaves() );
@@ -71,10 +93,10 @@ void GraWaves::Run()
 	while( not quitCondition )
 	{
 		numTicks = timer->GetElapsed();
-		if( numTicks > 50000 )
+		if( numTicks > ticksPeriod )
 		{
 			// DONE : [Update] method call should include [timeStep] value as parameter.
-			Update( 1.0 );
+			Update( config->general_timestep );
 			timer->Reset();
 		}
 
