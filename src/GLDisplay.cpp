@@ -179,23 +179,16 @@ int GLDisplay::GetKey()
     return keyCode;
 }
 
+void GLDisplay::UserKeys( int keycode )
+{
+    keycode = keycode;
+}
+
 void GLDisplay::ProcessKeys( SDL_Event &event )
 {
     m_keyCode = (int) event.key.keysym.sym;
-    switch( m_keyCode )
-    {
-        case 'z':
-            break;
 
-        case 'x':
-            break; 
-
-        case 'c':
-            break;
-
-        case 'p':
-            break;
-    }
+    UserKeys( m_keyCode );
 }
 
 void GLDisplay::ConvertColor( unsigned int rgb, float& r, float& g, float& b )

@@ -117,7 +117,6 @@ void Universe::Update( double timeStep )
 void Universe::Initialize()
 {
     Body* a_body;
-    Wave* a_wave;
 
     // DONE : Inject all bodies into universe.
     // DONE : Inject all waves into universe.

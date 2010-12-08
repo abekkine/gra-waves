@@ -16,6 +16,7 @@ class GLDisplay {
         void PreRender();
         void PostRender();
         virtual void Render()=0;
+        virtual void UserKeys( int keycode );
         void Update();
         void Reshape(int w, int h);
         bool CheckQuit();
@@ -27,7 +28,6 @@ class GLDisplay {
 
     protected:
         void ConvertColor( unsigned int rgb, float& r, float& g, float& b );
-        
     
     private:
         int m_keyCode;
@@ -52,6 +52,7 @@ class GLDisplay {
         void GL_Init();
         void ProcessKeys( SDL_Event &event );
 };
+
 
 #endif
 

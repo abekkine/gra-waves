@@ -10,6 +10,7 @@ class Renderer : public GLDisplay {
     public:
         Renderer();
         void Render();
+        void UserKeys( int keycode );
         void RegisterBodies( BodyVectorType& bodies );
         void RegisterWaves( WaveVectorType& waves );
         void BodyDisplay( bool enable );

@@ -26,6 +26,20 @@ void Renderer::Render()
     }
 }
 
+void Renderer::UserKeys( int keycode )
+{
+    switch( keycode )
+    {
+        case 'z':
+            puts( "'z' key is pressed." );
+            break;
+
+        case 'a':
+            puts( "'a' key is pressed." );
+            break;
+    }
+}
+
 void Renderer::RegisterBodies( BodyVectorType& bodies )
 {
     Renderer::bodies = bodies;
