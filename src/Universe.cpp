@@ -126,10 +126,6 @@ void Universe::Initialize()
         a_body = new Body( i );
         a_body->AtRandom( radius );
         bodies.push_back( a_body );
-
-        // DONE : Initiate a wave for each created body.
-        a_wave = new Wave( a_body );
-        waves.push_back( a_wave );
     }
 }
 

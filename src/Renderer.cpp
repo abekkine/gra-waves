@@ -15,14 +15,14 @@ Renderer::Renderer()
 
 void Renderer::Render()
 {
-    if( fBodiesAvailable && fBodyDisplayEnable )
-    {
-        RenderBodies();
-    }
-
     if( fWavesAvailable && fWaveDisplayEnable )
     {
         RenderWaves();
+    }
+
+    if( fBodiesAvailable && fBodyDisplayEnable )
+    {
+        RenderBodies();
     }
 }
 
@@ -63,13 +63,18 @@ void Renderer::RenderWaves()
     Vector center;
     Scalar radius;
     Scalar age;
+    bool alive;
 
     for( iWave=waves.begin(); iWave!=waves.end(); ++iWave )
     {
         center = (*iWave)->GetCenter();
         radius = (*iWave)->Radius();
         age = (*iWave)->Age();
-        RenderSingleWave( center, radius, age );
+        alive = (*iWave)->IsAlive();
+        if( alive )
+        {
+            RenderSingleWave( center, radius, age );
+        }
     }
 }
 
