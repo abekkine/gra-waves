@@ -21,6 +21,17 @@ void GLDisplay::InitVars()
     vpTop = 100.0;
     vpNear = -1.0;
     vpFar = 1.0;
+    zoomFactor = 1.0;
+}
+
+void GLDisplay::Zoom( double factor )
+{
+    zoomFactor *= factor;
+    
+    if( m_screen != NULL )
+    {
+        Reshape( m_screen->w, m_screen->h );
+    }
 }
 
 void GLDisplay::SetScreenSize( int width, int height )
@@ -117,7 +128,7 @@ void GLDisplay::Reshape(int width, int height)
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
 
-    glOrtho( vpLeft, vpRight, vpBottom, vpTop, vpNear, vpFar );
+    glOrtho( vpLeft * zoomFactor, vpRight * zoomFactor, vpBottom * zoomFactor, vpTop * zoomFactor, vpNear, vpFar );
 
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();

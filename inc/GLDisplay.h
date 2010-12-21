@@ -25,11 +25,13 @@ class GLDisplay {
         int GetKey();
         void SetBGColor( unsigned int color );
         void SetBGAlpha( float alpha );
+        void Zoom( double factor );
 
     protected:
         void ConvertColor( unsigned int rgb, float& r, float& g, float& b );
     
     private:
+        double zoomFactor;
         int m_keyCode;
         SDL_Event m_event;
          Uint8 *m_keys;

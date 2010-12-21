@@ -37,11 +37,13 @@ void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
         case 'z':
             if( shift )
             {
-                puts( "'Z' key is pressed." );
+                // Zoom in
+                Zoom( 1.25 );
             }
             else
             {
-                puts( "'z' key is pressed." );
+                // Zoom out
+                Zoom( 0.8 );
             }
             break;
     }
