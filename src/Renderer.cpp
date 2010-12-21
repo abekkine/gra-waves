@@ -26,16 +26,23 @@ void Renderer::Render()
     }
 }
 
-void Renderer::UserKeys( int keycode )
+void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
 {
+    // In order to avoid warning messages when modifier keys are not being used.
+    ctrl = ctrl;
+    shift = shift;
+
     switch( keycode )
     {
         case 'z':
-            puts( "'z' key is pressed." );
-            break;
-
-        case 'a':
-            puts( "'a' key is pressed." );
+            if( shift )
+            {
+                puts( "'Z' key is pressed." );
+            }
+            else
+            {
+                puts( "'z' key is pressed." );
+            }
             break;
     }
 }

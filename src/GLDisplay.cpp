@@ -179,16 +179,24 @@ int GLDisplay::GetKey()
     return keyCode;
 }
 
-void GLDisplay::UserKeys( int keycode )
+void GLDisplay::UserKeys( int keycode, bool shift, bool ctrl )
 {
     keycode = keycode;
+    shift = shift;
+    ctrl = ctrl;
 }
 
 void GLDisplay::ProcessKeys( SDL_Event &event )
 {
+    bool shiftState;
+    bool ctrlState;
+    SDLMod modifier = SDL_GetModState(); 
     m_keyCode = (int) event.key.keysym.sym;
 
-    UserKeys( m_keyCode );
+    shiftState = ( (modifier & (KMOD_LSHIFT|KMOD_RSHIFT)) != 0);
+    ctrlState  = ( (modifier & (KMOD_LCTRL|KMOD_RCTRL)) != 0);
+
+    UserKeys( m_keyCode, shiftState, ctrlState );
 }
 
 void GLDisplay::ConvertColor( unsigned int rgb, float& r, float& g, float& b )

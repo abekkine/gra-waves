@@ -31,5 +31,5 @@
 0031 | OPEN | Date/Time information (open/close) would be useful in todo list.
 0032 | OPEN | Todo list statistics should be added to completion report script.
 0033 | OPEN | Configurable font support should be added to display class.
-0034 | OPEN | Custom keypress methods should be implemented.
+0034 | CLOSED | Custom keypress methods should be implemented.
 0035 | OPEN | Random seed should be configurable.

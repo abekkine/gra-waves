@@ -16,7 +16,7 @@ class GLDisplay {
         void PreRender();
         void PostRender();
         virtual void Render()=0;
-        virtual void UserKeys( int keycode );
+        virtual void UserKeys( int keycode, bool shift, bool ctrl );
         void Update();
         void Reshape(int w, int h);
         bool CheckQuit();
