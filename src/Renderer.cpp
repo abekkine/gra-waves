@@ -11,6 +11,7 @@ Renderer::Renderer()
     bodyRed = bodyGreen = bodyBlue = 1.0;
     waveRed = waveGreen = 0.0;
     waveBlue = 1.0;
+    alphafactor = 1.0;
 }
 
 void Renderer::Render()
@@ -108,7 +109,7 @@ void Renderer::RenderSingleWave( Vector center, double radius, double age )
 
     alpha = (Wave::WAVE_LIFETIME - age)/Wave::WAVE_LIFETIME;
 
-    glColor4f( waveRed, waveGreen, waveBlue, alpha );
+    glColor4f( waveRed, waveGreen, waveBlue, alpha * alphafactor );
     //glBegin( GL_POLYGON );
     glBegin( GL_LINE_STRIP );
         for( theta=0.0; theta<2.0*M_PI; theta+=0.1*M_PI )
@@ -139,3 +140,7 @@ void Renderer::SetWaveColor( unsigned int color )
     ConvertColor( color, waveRed, waveGreen, waveBlue );
 }
 
+void Renderer::SetWaveAlpha( double alphafactor )
+{
+    Renderer::alphafactor = alphafactor;
+}

@@ -35,6 +35,7 @@ void Config::Defaults()
     wave_lifetime = 100.0;
     wave_display = true;
     wave_color = 0x0000ff;
+    wave_alphafactor = 1.0;
     // Universe
     universe_radius = 1000.0;
     universe_gravity_con = 1.0;
@@ -81,6 +82,7 @@ void Config::Read( const char *filename )
             config_setting_lookup_float( setting_cfg, "lifetime", &wave_lifetime );
             config_setting_lookup_int( setting_cfg, "display", &wave_display );
             config_setting_lookup_int( setting_cfg, "color", &wave_color );
+            config_setting_lookup_float( setting_cfg, "alphafactor", &wave_alphafactor );
         }
 
         setting_cfg = config_lookup( &config, "gwaves.universe" );

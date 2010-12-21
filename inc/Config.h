@@ -35,6 +35,7 @@ public:
     double wave_lifetime;
     int wave_display;
     int wave_color;
+    double wave_alphafactor;
     // Universe
     double universe_radius;
     double universe_gravity_con;

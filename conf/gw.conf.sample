@@ -41,6 +41,7 @@ gwaves =
         display = 1;
         //      0xRRGGBB
         color = 0x0080ff;
+        alphafactor = 0.8;
     };
 
     // Universe configuration.

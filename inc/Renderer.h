@@ -17,6 +17,7 @@ class Renderer : public GLDisplay {
         void WaveDisplay( bool enable );
         void SetBodyColor( unsigned int color );
         void SetWaveColor( unsigned int color );
+        void SetWaveAlpha( double alphafactor );
 
     private:
         float bodyRed;
@@ -25,6 +26,7 @@ class Renderer : public GLDisplay {
         float waveRed;
         float waveGreen;
         float waveBlue;
+        double alphafactor;
         bool fBodiesAvailable;
         bool fBodyDisplayEnable;
         BodyVectorType bodies;
