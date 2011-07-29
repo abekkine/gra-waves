@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<?taskcoach release="1.1.1" tskversion="30"?>
+<tasks>
+<task completiondate="2011-07-29 09:40:47.377466" id="45182352:1311921628.52" percentageComplete="100" startdate="2011-07-29 09:40:00" status="1" subject="Creation of new taskfile."/>
+<task id="49697168:1311921648.55" startdate="2011-07-29 09:40:00" status="1" subject="Importing available tasks into new taskfile."/>
+<syncmlconfig>
+<TaskCoach-00000131749f0c41ef31c1ac007f000000010001>
+<spds>
+<sources>
+<TaskCoach-00000131749f0c41ef31c1ac007f000000010001.Tasks/>
+<TaskCoach-00000131749f0c41ef31c1ac007f000000010001.Notes/>
+</sources>
+<syncml>
+<Auth/>
+<Conn/>
+</syncml>
+</spds>
+</TaskCoach-00000131749f0c41ef31c1ac007f000000010001>
+</syncmlconfig>
+<guid>
+00000131749f0c41ef31c1ac007f000000010001
+</guid>
+</tasks>
