@@ -1,8 +1,12 @@
-<?xml version="1.0" ?>
-<?taskcoach release="1.1.1" tskversion="30"?>
+<?xml version="1.0" encoding="utf-8"?>
+<?taskcoach release="1.2.24" tskversion="33"?>
 <tasks>
-<task completiondate="2011-07-29 09:40:47.377466" id="45182352:1311921628.52" percentageComplete="100" startdate="2011-07-29 09:40:00" status="1" subject="Creation of new taskfile."/>
 <task id="49697168:1311921648.55" startdate="2011-07-29 09:40:00" status="1" subject="Importing available tasks into new taskfile."/>
+<task id="3afca56c-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:21:00" status="1" subject="Reset simulation option should be implemented."/>
+<task id="d7886042-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:26:00" status="1" subject="Closed space should be implemented."/>
+<task id="7fcc9fee-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:23:00" status="1" subject="Initial random speed vectors could be set."/>
+<task completiondate="2011-07-29 09:40:47.377466" id="45182352:1311921628.52" percentageComplete="100" startdate="2011-07-29 09:40:00" status="1" subject="Creation of new taskfile."/>
+<task id="4a958c78-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:22:00" status="1" subject="Mouse pan and zoom should be implemented."/>
 <syncmlconfig>
 <TaskCoach-00000131749f0c41ef31c1ac007f000000010001>
 <spds>
