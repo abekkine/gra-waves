@@ -4,22 +4,18 @@
 GraWaves::GraWaves( int numBodies )
 {
     initVars();
-    // DONE : Reserve [numBodies] for instantiating [universe] object.
     GraWaves::numBodies = numBodies;
 }
 
 GraWaves::GraWaves()
 {
     initVars();
-    // DONE : Reserve a default number of bodies, for instantiating [universe] object.
     GraWaves::numBodies = DEFAULT_NUM_BODIES;
 }
 
 GraWaves::~GraWaves()
 {
-    // DONE : Delete [display] resource.
     delete display;
-    // DONE : Delete [universe] resource.
     delete universe;
     delete config;
 }
@@ -30,15 +26,12 @@ void GraWaves::initVars()
     display = NULL;
     quitCondition = false;
     numTicks = 0;
-    // DONE : Initialize [universe] to NULL.
     universe = NULL;
     config = NULL;
 }
 
-// DONE : All [Update] methods should accept [double timeStep] as parameter.
 void GraWaves::Update( double timeStep )
 {
-    // DONE : Call [universe] [Update] method.
     universe->Update( timeStep );
     universe->DumpStats();
 }
@@ -81,7 +74,6 @@ void GraWaves::Initialize()
     }
     timer->Reset();
 
-    // DONE : Initialize [universe].
     universe = new Universe();
     universe->Radius( config->universe_radius );
     universe->NumBodies( config->universe_num_bodies );
@@ -92,9 +84,6 @@ void GraWaves::Initialize()
     display->RegisterWaves( universe->GetWaves() );
 }
 
-// DONE : Remove [ReadKey] method.
-// DONE : Remove [GetKey] method.
-
 void GraWaves::Run()
 {
     while( not quitCondition )
@@ -102,7 +91,6 @@ void GraWaves::Run()
         numTicks = timer->GetElapsed();
         if( numTicks > ticksPeriod )
         {
-            // DONE : [Update] method call should include [timeStep] value as parameter.
             Update( config->general_timestep );
             timer->Reset();
             display->RegisterWaves( universe->GetWaves() );
@@ -110,8 +98,6 @@ void GraWaves::Run()
 
         display->Update();
         display->PollEvents();
-
-        // DONE : Remove [ReadKey] method call.
 
         quitCondition = display->CheckQuit();
     }

@@ -19,7 +19,6 @@ Universe::Universe( Scalar radius ) : conGravity( GRAVITY_COEF )
 
 Universe::~Universe()
 {
-    // DONE : Free objects in [bodies].
     while( not bodies.empty() )
     {
         Body *aBody = bodies.back();
@@ -27,7 +26,6 @@ Universe::~Universe()
         delete aBody;
     }
 
-    // DONE : Free objects in [waves].
     while( not waves.empty() )
     {
         Wave *aWave = waves.back();
@@ -53,14 +51,10 @@ void Universe::initVars()
     stats.age = 0.0;
 }
 
-// DONE : Universe::Update() method should be implemented.
-// DONE : Universe::Update() method should accept [double timeStep] as parameter.
 void Universe::Update( double timeStep )
 {
     Universe::time += timeStep;
 
-    // DONE : Update all waves.
-    // DONE : Discard inactive waves.
     WaveVectorType::iterator iWave;
     for( iWave=waves.begin(); iWave!=waves.end(); ++iWave )
     {
@@ -83,13 +77,11 @@ void Universe::Update( double timeStep )
         }
     }
 
-    // DONE : Update all bodies.
     BodyVectorType::iterator iBody;
     for( iBody=bodies.begin(); iBody!=bodies.end(); ++iBody )
     {
         (*iBody)->Update( timeStep );
 
-        // DONE : Initiate a new wave for new position of each body.
         Wave *new_wave = new Wave( *iBody );
         waves.push_back( new_wave );
     }
@@ -102,27 +94,20 @@ void Universe::Update( double timeStep )
     {
         theBody = *iBody;
         
-        // DONE : Extract list of waves.
         GetWavesCoveringBody( theBody, waveList );
 
-        // DONE : Eliminate older waves from multiple coverings.
         EliminateOlderWaves( waveList );
 
-        // DONE : Calculate combined acceleration vector.
         bodyAcceleration = ComputeAccelerationVector( theBody, waveList );
 
-        // DONE : Set [body] acceleration vector.
         theBody->SetAcceleration( bodyAcceleration );
     }
 }
 
-// DONE : Universe::Initialize( n ) method should be initialized.
 void Universe::Initialize()
 {
     Body* a_body;
 
-    // DONE : Inject all bodies into universe.
-    // DONE : Inject all waves into universe.
     for( int i=0; i<Universe::numBodies; i++ )
     {
         a_body = new Body( i );

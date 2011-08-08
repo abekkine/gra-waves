@@ -11,8 +11,6 @@ public:
     Body( int id );
     ~Body();
     void AtRandom( Scalar radius );
-    // DONE : Method [SetAcceleration] will be declared. (Defined in Entity).
-    // DONE : [Update] method should accept [double timeStep] parameter.
     void Update( double timeStep );
 
 private:

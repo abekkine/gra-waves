@@ -8,25 +8,24 @@ class Vector
 public:
     Vector();
     Vector( double x, double y, double z );
-    // DONE : Implement either [Set] method or overload '=' operator.
     void Set( double x, double y, double z );
-    // 1. Assignment
+    // Assignment
     Vector& operator=(const Vector &rhs);
-    // 2. Addition
+    // Addition
     Vector operator+(const Vector &rhs);
-    // 3. Substraction
+    // Substraction
     Vector operator-(const Vector &rhs);
-    // 4. Multiplication by a scalar
+    // Multiplication by a scalar
     Vector operator*(const Scalar &rhs);
-    // 5. Division by a scalar
+    // Division by a scalar
     Vector operator/(const Scalar &rhs);
-    // 6. Dot product
+    // Dot product
     Scalar operator|(const Vector &rhs);
-    // 7. Cross product
+    // Cross product
     Vector operator^(const Vector &rhs);
-    // 8. Magnitude
+    // Magnitude
     Scalar operator~();
-    // 9. Unit
+    // Unit
     Vector operator!();
     ~Vector();
 
