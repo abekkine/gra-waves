@@ -5,7 +5,9 @@ Scalar Universe::GRAVITY_COEF = 1.0;
 
 Universe::Universe() : conGravity( GRAVITY_COEF )
 {
-    // DONE : Constant member [conSize] should be removed from this class.
+	/// Initialize with a separate function.
+	/// Required to maintain reusability when there
+	/// are multiple constructors.
     initVars();
 }
 
@@ -36,14 +38,15 @@ Universe::~Universe()
 
 void Universe::initVars()
 {
-    // DONE : All member variables should be reset in this method.
+	/// All class members are given their default values here.
+	/// @remark Due to a recommendation, it is advised to give all defaults impossible values. It is worth to consider.
     radius = 0;
     numBodies = 0;
     time = 0.0;
     bodies.clear();
     waves.clear();
 
-    // Stats
+    /// Also resets statistics data.
     fDumpEnabled = false;
     stats.numBodies = 0;
     stats.numWaves = 0;

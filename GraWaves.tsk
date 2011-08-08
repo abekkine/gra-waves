@@ -2,11 +2,33 @@
 <?taskcoach release="1.2.24" tskversion="33"?>
 <tasks>
 <task id="49697168:1311921648.55" startdate="2011-07-29 09:40:00" status="1" subject="Importing available tasks into new taskfile."/>
-<task id="3afca56c-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:21:00" status="1" subject="Reset simulation option should be implemented."/>
-<task id="d7886042-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:26:00" status="1" subject="Closed space should be implemented."/>
-<task id="7fcc9fee-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:23:00" status="1" subject="Initial random speed vectors could be set."/>
 <task completiondate="2011-07-29 09:40:47.377466" id="45182352:1311921628.52" percentageComplete="100" startdate="2011-07-29 09:40:00" status="1" subject="Creation of new taskfile."/>
+<task id="43733e5a-c1a8-11e0-87b4-0024811f5dee" startdate="2011-08-08 13:22:00" status="1" subject="A freeze/pause function should be implemented.">
+<description>
+SPACE key should pause/resume the simulation.
+</description>
+</task>
+<task id="d7886042-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:26:00" status="1" subject="Closed space should be implemented."/>
+<task id="021e848a-c1b4-11e0-9b75-0024811f5dee" startdate="2011-08-08 14:46:00" status="1" subject="Initial velocity assignment.">
+<description>
+Initial velocities should be assigned in a regular procedure. Debug statements should be removed.
+</description>
+</task>
+<task id="2d9fc808-c1b4-11e0-9b75-0024811f5dee" startdate="2011-08-08 14:47:00" status="1" subject="Color conversion is redefined in Wave class.">
+<description>
+Reuse of existing routines should be maximized. If necessary, a utility sub class would be used from both GLDisplay and Wave classes.
+</description>
+</task>
+<task id="58125f08-c1a8-11e0-87b4-0024811f5dee" startdate="2011-08-08 13:22:00" status="1" subject="Individual coloring for waves should be possible."/>
+<task id="7fcc9fee-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:23:00" status="1" subject="Initial random speed vectors could be set."/>
+<task id="c00089e0-c12c-11e0-833d-00241d8444a1" startdate="2011-08-07 22:37:00" status="1" subject="Bodies should not pass the speed of waves.">
+<description>
+1) Under a certain distance, bodies should unite.
+2) Near and above wave speed, bodies should combine.
+</description>
+</task>
 <task id="4a958c78-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:22:00" status="1" subject="Mouse pan and zoom should be implemented."/>
+<task id="3afca56c-ba74-11e0-a843-485d6095e6ad" startdate="2011-07-30 09:21:00" status="1" subject="Reset simulation option should be implemented."/>
 <syncmlconfig>
 <TaskCoach-00000131749f0c41ef31c1ac007f000000010001>
 <spds>

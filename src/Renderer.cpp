@@ -86,33 +86,28 @@ void Renderer::RenderWaves()
     WaveVectorType::iterator iWave;
     Vector center;
     Scalar radius;
-    Scalar age;
     bool alive;
 
     for( iWave=waves.begin(); iWave!=waves.end(); ++iWave )
     {
         center = (*iWave)->GetCenter();
         radius = (*iWave)->Radius();
-        age = (*iWave)->Age();
         alive = (*iWave)->IsAlive();
         if( alive )
         {
-            RenderSingleWave( center, radius, age );
+            RenderSingleWave( center, radius, (*iWave)->GetColor() );
         }
     }
 }
 
-void Renderer::RenderSingleWave( Vector center, double radius, double age )
+void Renderer::RenderSingleWave( Vector center, double radius, float *color )
 {
     double theta;
-    double alpha;
 
-    alpha = (Wave::WAVE_LIFETIME - age)/Wave::WAVE_LIFETIME;
-
-    glColor4f( waveRed, waveGreen, waveBlue, alpha * alphafactor );
+    glColor4fv( color );
     //glBegin( GL_POLYGON );
     glBegin( GL_LINE_STRIP );
-        for( theta=0.0; theta<2.0*M_PI; theta+=0.1*M_PI )
+        for( theta=0.0; theta<2.0*M_PI; theta+=0.01*M_PI )
         {
             glVertex2d( center.x + radius * cos(theta), center.y + radius * sin(theta) );
         }

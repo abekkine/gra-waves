@@ -3,9 +3,15 @@
 
 Scalar Wave::WAVE_LIFETIME = 1.0;
 Scalar Wave::WAVE_SPEED = 1.0;
+Scalar Wave::WAVE_ALPHAFACTOR = 1.0;
+unsigned int Wave::WAVE_DEFAULTCOLOR = 0x204080;
 
 // DONE : Constant [conLifetime] will be initialized.
-Wave::Wave():conLifetime( WAVE_LIFETIME ),conSpeed( WAVE_SPEED )
+Wave::Wave():
+    conLifetime( WAVE_LIFETIME ),
+    conSpeed( WAVE_SPEED ), 
+    conAlpha( WAVE_ALPHAFACTOR ), 
+    conDefaultColor( WAVE_DEFAULTCOLOR )
 {
     // DONE : Call [initVars] for general initialization.
     initVars();
@@ -13,7 +19,11 @@ Wave::Wave():conLifetime( WAVE_LIFETIME ),conSpeed( WAVE_SPEED )
 
 // DONE : Constructor will use [body] instead of [center].
 // DONE : Constant [conLifetime] will be initialized.
-Wave::Wave( Body* body ):conLifetime( WAVE_LIFETIME ),conSpeed( WAVE_SPEED )
+Wave::Wave( Body* body ):
+    conLifetime( WAVE_LIFETIME ),
+    conSpeed( WAVE_SPEED ),
+    conAlpha( WAVE_ALPHAFACTOR ),
+    conDefaultColor( WAVE_DEFAULTCOLOR )
 {
     // DONE : Call [initVars] for general initialization.
     initVars();
@@ -23,6 +33,12 @@ Wave::Wave( Body* body ):conLifetime( WAVE_LIFETIME ),conSpeed( WAVE_SPEED )
     center = body->GetPosition();
     radius = 0.0;
     alive = true;
+
+    fColorEnable = false;
+    convertColor( conDefaultColor, defaultColor, false );
+    defaultColor[3] = conAlpha;
+    convertColor( 0, waveColor, true );
+    activeColorPointer = &defaultColor[0];
 }
 
 Wave::~Wave()
@@ -56,7 +72,23 @@ void Wave::Update( double timeStep )
         age += timeStep;
         // DONE : update wave radius.
         radius += timeStep * conSpeed;
+
+        // Update alpha 
+        activeColorPointer[3] = conAlpha * (WAVE_LIFETIME - age) / WAVE_LIFETIME;
     }
+}
+
+void Wave::SetColor( unsigned int color )
+{
+    fColorEnable = true;
+    convertColor( color, waveColor );
+    activeColorPointer = &waveColor[0];
+}
+
+void Wave::ResetColor()
+{
+    fColorEnable = false;
+    activeColorPointer = &defaultColor[0];
 }
 
 // DONE : implement [IsAlive] method.
@@ -99,3 +131,24 @@ Scalar Wave::Radius()
     return radius;
 }
 
+float *Wave::GetColor()
+{
+    return activeColorPointer;
+}
+
+void Wave::convertColor( unsigned int color, float *color_array, bool alpha )
+{
+    if( alpha )
+    {
+        color_array[0] = ( (color >> 24) & 0xff ) / 255.0;
+        color_array[1] = ( (color >> 16) & 0xff ) / 255.0;
+        color_array[2] = ( (color >> 8) & 0xff ) / 255.0;
+        color_array[3] = ( color & 0xff ) / 255.0;
+    }
+    else
+    {
+        color_array[0] = ( (color >> 16) & 0xff ) / 255.0;
+        color_array[1] = ( (color >> 8) & 0xff ) / 255.0;
+        color_array[2] = ( color & 0xff ) / 255.0;
+    }
+}

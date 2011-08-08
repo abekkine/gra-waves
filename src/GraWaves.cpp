@@ -57,6 +57,9 @@ void GraWaves::Initialize()
     Entity::DEFAULT_MASS = config->body_mass;
     Wave::WAVE_LIFETIME = config->wave_lifetime;
     Wave::WAVE_SPEED = config->wave_speed;
+    Wave::WAVE_DEFAULTCOLOR = config->wave_color;
+    Wave::WAVE_ALPHAFACTOR = config->wave_alphafactor;
+
     Universe::GRAVITY_COEF = config->universe_gravity_con;
 
     display->SetBGColor( config->display_bgcolor );
@@ -65,8 +68,6 @@ void GraWaves::Initialize()
     display->BodyDisplay( (config->body_display)!=0 );
     display->SetBodyColor( config->body_color );
     display->WaveDisplay( (config->wave_display)!=0 );
-    display->SetWaveColor( config->wave_color );
-    display->SetWaveAlpha( config->wave_alphafactor );
     display->SetViewport( -config->universe_radius, config->universe_radius, -config->universe_radius, config->universe_radius );
 
     // calculate ticks number corresponding correct period of time.

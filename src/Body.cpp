@@ -46,6 +46,12 @@ void Body::AtRandom( Scalar radius )
     position.x = RandomBetween( -radius, radius );
     position.y = RandomBetween( -radius, radius );
     position.z = RandomBetween( -radius, radius );
+
+//DEBUG for speeds
+	velocity.x = RandomBetween( -0.5, 0.5 );
+	velocity.y = RandomBetween( -0.5, 0.5 );
+	velocity.z = RandomBetween( -0.5, 0.5 );
+//END
 }
 
 // DONE : Method [SetAcceleration] will be implemented.
