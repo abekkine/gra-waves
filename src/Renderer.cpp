@@ -12,10 +12,18 @@ Renderer::Renderer()
     waveRed = waveGreen = 0.0;
     waveBlue = 1.0;
     alphafactor = 1.0;
+
+    _mode = Mode::GetInstance();
 }
 
 void Renderer::Render()
 {
+    if( quitSignal )
+    {
+        _mode->Request( Mode::REQ_QUIT );
+        return;
+    }
+
     if( fWavesAvailable && fWaveDisplayEnable )
     {
         RenderWaves();
@@ -35,6 +43,11 @@ void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
 
     switch( keycode )
     {
+        case 'q':
+        case 27:
+            _mode->Request( Mode::REQ_QUIT );
+            break;
+
         case 'z':
             if( shift )
             {
@@ -46,6 +59,14 @@ void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
                 // Zoom out
                 Zoom( 0.8 );
             }
+            break;
+
+        case 's':
+            _mode->Request( Mode::REQ_STEP );
+            break;
+
+        case ' ':
+            _mode->Request( Mode::REQ_TOGGLE );
             break;
     }
 }

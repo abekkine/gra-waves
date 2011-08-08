@@ -11,6 +11,7 @@ GLDisplay::~GLDisplay()
 
 void GLDisplay::InitVars()
 {
+    quitSignal = false;
     m_screen_width = -1;
     m_screen_height = -1;
     bgRed = bgGreen = bgBlue = 0.0;
@@ -94,18 +95,6 @@ void GLDisplay::Update()
     PostRender();
 }
 
-bool GLDisplay::CheckQuit()
-{
-    bool result = false;
-
-    if( CheckKeyPress( SDLK_ESCAPE ) || CheckKeyPress( SDLK_q ) )
-    {
-        result = true;
-    }
-
-    return result;
-}
-
 void GLDisplay::GL_Init()
 {
     glShadeModel( GL_SMOOTH );
@@ -134,10 +123,8 @@ void GLDisplay::Reshape(int width, int height)
     glLoadIdentity();
 }
 
-bool GLDisplay::PollEvents()
+void GLDisplay::PollEvents()
 {
-    bool result = false;
-    
     while( SDL_PollEvent(&m_event) )
     {
         switch( m_event.type )
@@ -159,35 +146,10 @@ bool GLDisplay::PollEvents()
                 break;
 
             case SDL_QUIT:
-                result = true;
+                quitSignal = true;
                 break;
         }
     }
-
-    return result;
-}
-
-bool GLDisplay::CheckKeyPress( int key )
-{
-    bool result = false;
-    m_keys = SDL_GetKeyState(NULL);
-
-    if ( m_keys[key] )
-    {
-        result = true;
-    }
-
-    return result;
-
-}
-
-int GLDisplay::GetKey()
-{
-    int keyCode = m_keyCode;
-
-    m_keyCode = -1;
-
-    return keyCode;
 }
 
 void GLDisplay::UserKeys( int keycode, bool shift, bool ctrl )

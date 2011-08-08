@@ -2,6 +2,8 @@
 #define GRAWAVES_H
 
 #include <vector>
+
+#include <Mode.h>
 #include <Timer.h>
 #include <Config.h>
 #include <Renderer.h>
@@ -13,6 +15,9 @@ using namespace std;
 
 class GraWaves
 {
+    private:
+        Mode* _mode;
+
     public:
         GraWaves();
         GraWaves( int numBodies );
@@ -20,17 +25,18 @@ class GraWaves
         void Update( double timeStep );
         void Initialize();
         void Run();
+        void Step();
 
     private:
         int numBodies;
         Config *config;
         Universe *universe;
         Renderer *display;
-        bool quitCondition;
         unsigned int numTicks;
         unsigned int ticksPeriod;
         Timer *timer;
         void initVars();
+        void ModeProcessing();
 };
 
 #endif

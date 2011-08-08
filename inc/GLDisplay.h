@@ -19,13 +19,13 @@ class GLDisplay {
         virtual void UserKeys( int keycode, bool shift, bool ctrl );
         void Update();
         void Reshape(int w, int h);
-        bool CheckQuit();
-        bool PollEvents();
-        bool CheckKeyPress( int key );
-        int GetKey();
+        void PollEvents();
         void SetBGColor( unsigned int color );
         void SetBGAlpha( float alpha );
         void Zoom( double factor );
+
+    public:
+        bool quitSignal;
 
     protected:
         void ConvertColor( unsigned int rgb, float& r, float& g, float& b );
@@ -34,7 +34,6 @@ class GLDisplay {
         double zoomFactor;
         int m_keyCode;
         SDL_Event m_event;
-         Uint8 *m_keys;
         SDL_Surface *m_screen;
         int m_screen_width;
         int m_screen_height;

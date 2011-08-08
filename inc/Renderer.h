@@ -1,6 +1,7 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include <Mode.h>
 #include <GLDisplay.h>
 #include <Body.h>
 #include <Wave.h>
@@ -20,6 +21,8 @@ class Renderer : public GLDisplay {
         void SetWaveAlpha( double alphafactor );
 
     private:
+        Mode* _mode;
+
         float bodyRed;
         float bodyGreen;
         float bodyBlue;
@@ -37,7 +40,6 @@ class Renderer : public GLDisplay {
         void RenderBodies();
         void RenderWaves();
         void RenderSingleWave( Vector center, double radius, float *color );
-
 };
 
 #endif

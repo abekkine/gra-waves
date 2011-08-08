@@ -24,10 +24,10 @@ void GraWaves::initVars()
 {
     timer = NULL;
     display = NULL;
-    quitCondition = false;
     numTicks = 0;
     universe = NULL;
     config = NULL;
+    _mode = Mode::GetInstance();
 }
 
 void GraWaves::Update( double timeStep )
@@ -82,24 +82,63 @@ void GraWaves::Initialize()
 
     display->RegisterBodies( universe->GetBodies() );
     display->RegisterWaves( universe->GetWaves() );
+
+    //DEBUG
+    _mode->DebugEnable( true );
 }
 
 void GraWaves::Run()
 {
-    while( not quitCondition )
+    while( Mode::MODE_QUIT != _mode->GetMode() )
     {
-        numTicks = timer->GetElapsed();
-        if( numTicks > ticksPeriod )
+        ModeProcessing();
+
+        if( Mode::MODE_RUN == _mode->GetMode() )
         {
-            Update( config->general_timestep );
-            timer->Reset();
-            display->RegisterWaves( universe->GetWaves() );
+            Step();
+        }
+        else if( Mode::MODE_STEP == _mode->GetMode() )
+        {
+            Step();
+            _mode->SetMode( Mode::MODE_PAUSE );
         }
 
         display->Update();
         display->PollEvents();
-
-        quitCondition = display->CheckQuit();
     }
 }
 
+void GraWaves::Step()
+{
+    numTicks = timer->GetElapsed();
+    if( numTicks > ticksPeriod )
+    {
+        Update( config->general_timestep );
+        timer->Reset();
+        display->RegisterWaves( universe->GetWaves() );
+    }
+}
+
+void GraWaves::ModeProcessing()
+{
+    Mode::RequestType req = _mode->GetRequest();
+
+    switch( req )
+    {
+        case Mode::REQ_TOGGLE:
+            _mode->Toggle();
+            break;
+
+        case Mode::REQ_STEP:
+            _mode->SetMode( Mode::MODE_STEP );
+            break;
+
+        case Mode::REQ_QUIT:
+            _mode->SetMode( Mode::MODE_QUIT );
+            break;
+
+        case Mode::REQ_NONE:
+        default:
+            break;
+    }
+}
