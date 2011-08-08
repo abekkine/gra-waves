@@ -54,6 +54,11 @@ gwaves =
         num_bodies = 10;
         deadzone = 100.0;
     };
-    
+
+    // Debugging configuration flags.    
+    debug =
+    {
+        mode = true;
+    };
 };
 

@@ -85,7 +85,7 @@ void GraWaves::Initialize()
     display->RegisterWaves( universe->GetWaves() );
 
     //DEBUG
-    _mode->DebugEnable( true );
+    _mode->DebugEnable( config->debug_mode );
 }
 
 void GraWaves::Run()

@@ -42,6 +42,8 @@ void Config::Defaults()
     universe_gravity_con = 1.0;
     universe_num_bodies = 10;
     universe_deadzone = 1.0;
+    // Debugging
+    debug_mode = false;
 }
 
 void Config::Read( const char *filename )
@@ -94,6 +96,12 @@ void Config::Read( const char *filename )
             config_setting_lookup_float( setting_cfg, "gravity_con", &universe_gravity_con );
             config_setting_lookup_int( setting_cfg, "num_bodies", &universe_num_bodies );
             config_setting_lookup_float( setting_cfg, "deadzone", &universe_deadzone );
+        }
+
+        setting_cfg = config_lookup( &config, "gwaves.debug" );
+        if( setting_cfg != NULL )
+        {
+            config_setting_lookup_bool( setting_cfg, "mode", &debug_mode );
         }
 
         config_destroy( &config );

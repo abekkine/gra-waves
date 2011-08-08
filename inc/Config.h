@@ -42,6 +42,8 @@ public:
     double universe_gravity_con;
     int universe_num_bodies;
     double universe_deadzone;
+    // Debug
+    int debug_mode;
 };
 
 #endif
