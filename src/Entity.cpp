@@ -42,6 +42,11 @@ Vector& Entity::GetPosition()
     return position;
 }
 
+Vector& Entity::GetVelocity()
+{
+    return velocity;
+}
+
 void Entity::SetAcceleration( const Vector& acceleration )
 {
     Entity::acceleration = acceleration;

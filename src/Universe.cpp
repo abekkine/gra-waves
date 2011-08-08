@@ -2,6 +2,7 @@
 #include <Universe.h>
 
 Scalar Universe::GRAVITY_COEF = 1.0;
+bool Universe::SPEED_LIMIT = false;
 
 Universe::Universe() : conGravity( GRAVITY_COEF )
 {
@@ -112,6 +113,7 @@ void Universe::Initialize()
     {
         a_body = new Body( i );
         a_body->AtRandom( radius );
+        a_body->SetSpeedLimit( Universe::SPEED_LIMIT, Wave::WAVE_SPEED );
         bodies.push_back( a_body );
     }
 }

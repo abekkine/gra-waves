@@ -12,6 +12,7 @@ public:
     unsigned int Identifier();
     Scalar GetMass();
     Vector& GetPosition();
+    Vector& GetVelocity();
     void SetAcceleration( const Vector& acceleration );
 
 public:

@@ -12,8 +12,11 @@ public:
     ~Body();
     void AtRandom( Scalar radius );
     void Update( double timeStep );
+    void SetSpeedLimit( bool limit_enable, Scalar limit_value );
 
 private:
+    static bool fLimitEnable;
+    static Scalar speedLimit;
     void initVars();
     double RandomBetween( double min, double max );
 };

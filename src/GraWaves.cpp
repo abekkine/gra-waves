@@ -48,13 +48,14 @@ void GraWaves::Initialize()
 
     // Setup class constants
     Entity::DEFAULT_MASS = config->body_mass;
-    Entity::RANDOM_SPEED = config->body_initial_speed_limit;
+    Entity::RANDOM_SPEED = config->body_random_speed;
     Wave::WAVE_LIFETIME = config->wave_lifetime;
     Wave::WAVE_SPEED = config->wave_speed;
     Wave::WAVE_DEFAULTCOLOR = config->wave_color;
     Wave::WAVE_ALPHAFACTOR = config->wave_alphafactor;
 
     Universe::GRAVITY_COEF = config->universe_gravity_con;
+    Universe::SPEED_LIMIT = config->universe_speed_limit;
 
     display->SetBGColor( config->display_bgcolor );
     display->SetScreenSize( config->display_screen_width, config->display_screen_height );

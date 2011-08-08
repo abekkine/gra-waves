@@ -2,6 +2,9 @@
 #include <math.h>
 #include <Body.h>
 
+bool Body::fLimitEnable = false;
+Scalar Body::speedLimit = 0.0;
+
 Body::Body( int id )
 {
     initVars();
@@ -19,9 +22,26 @@ void Body::initVars()
 
 void Body::Update( double timeStep )
 {
-    velocity.x += timeStep * acceleration.x;
-    velocity.y += timeStep * acceleration.y;
-    //velocity.z += timeStep * acceleration.z;
+    if( fLimitEnable )
+    {
+        Vector vel = velocity;
+        vel.x = velocity.x + timeStep * acceleration.x;
+        vel.y = velocity.y + timeStep * acceleration.y;
+        if( ~vel < 0.95 * speedLimit )
+        {
+            velocity = vel;
+        }
+        else
+        {
+            // INCOMPLETE : something proper should be implemented otherwise.
+        }
+    }
+    else
+    {
+        velocity.x += timeStep * acceleration.x;
+        velocity.y += timeStep * acceleration.y;
+        //velocity.z += timeStep * acceleration.z;
+    }
 
     position.x += timeStep * velocity.x;
     position.y += timeStep * velocity.y;
@@ -51,5 +71,11 @@ void Body::AtRandom( Scalar radius )
 	velocity.x = randomSpeed * cos( randomAngle );
 	velocity.y = randomSpeed * sin( randomAngle );
 	velocity.z = 0.0;
+}
+
+void Body::SetSpeedLimit( bool limit_enable, Scalar limit_value )
+{
+    fLimitEnable = limit_enable;
+    speedLimit = limit_value;
 }
 

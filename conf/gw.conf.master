@@ -53,6 +53,8 @@ gwaves =
         gravity_con = 1.0;
         num_bodies = 10;
         deadzone = 100.0;
+        // When set true, bodies cannot exceed wave speed.
+        speedlimit = true;
     };
 
     // Debugging configuration flags.    

@@ -30,7 +30,7 @@ void Config::Defaults()
     body_mass = 100.0;
     body_display = true;
     body_color = 0xffffff;
-    body_initial_speed_limit = 2.0;
+    body_random_speed = 2.0;
     // Wave
     wave_speed = 1.0;
     wave_lifetime = 100.0;
@@ -42,6 +42,7 @@ void Config::Defaults()
     universe_gravity_con = 1.0;
     universe_num_bodies = 10;
     universe_deadzone = 1.0;
+    universe_speed_limit = true;
     // Debugging
     debug_mode = false;
 }
@@ -76,7 +77,7 @@ void Config::Read( const char *filename )
             config_setting_lookup_float( setting_cfg, "mass", &body_mass );
             config_setting_lookup_int( setting_cfg, "display", &body_display );
             config_setting_lookup_int( setting_cfg, "color", &body_color );
-            config_setting_lookup_float( setting_cfg, "randomspeed", &body_initial_speed_limit );
+            config_setting_lookup_float( setting_cfg, "randomspeed", &body_random_speed );
         }
 
         setting_cfg = config_lookup( &config, "gwaves.wave" );
@@ -96,6 +97,7 @@ void Config::Read( const char *filename )
             config_setting_lookup_float( setting_cfg, "gravity_con", &universe_gravity_con );
             config_setting_lookup_int( setting_cfg, "num_bodies", &universe_num_bodies );
             config_setting_lookup_float( setting_cfg, "deadzone", &universe_deadzone );
+            config_setting_lookup_bool( setting_cfg, "speedlimit", &universe_speed_limit );
         }
 
         setting_cfg = config_lookup( &config, "gwaves.debug" );

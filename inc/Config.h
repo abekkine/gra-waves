@@ -30,7 +30,7 @@ public:
     double body_mass;
     int body_display;
     int body_color;
-    double body_initial_speed_limit;
+    double body_random_speed;
     // Wave
     double wave_speed;
     double wave_lifetime;
@@ -42,6 +42,7 @@ public:
     double universe_gravity_con;
     int universe_num_bodies;
     double universe_deadzone;
+    int universe_speed_limit;
     // Debug
     int debug_mode;
 };

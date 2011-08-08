@@ -81,6 +81,7 @@ public:
 public:
 	/// @brief Gravity coefficient as a class static value.
     static Scalar GRAVITY_COEF;
+    static bool SPEED_LIMIT;
 
 private:
 	/// @brief Gravity coefficient as a class constant, used in simulation.
