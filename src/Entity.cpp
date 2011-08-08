@@ -1,6 +1,7 @@
 #include <Entity.h>
 
 Scalar Entity::DEFAULT_MASS = 1.0;
+Scalar Entity::RANDOM_SPEED = 0.0;
 
 Entity::Entity()
 {

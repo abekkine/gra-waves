@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <Body.h>
 
 Body::Body( int id )
@@ -20,11 +21,11 @@ void Body::Update( double timeStep )
 {
     velocity.x += timeStep * acceleration.x;
     velocity.y += timeStep * acceleration.y;
-    velocity.z += timeStep * acceleration.z;
+    //velocity.z += timeStep * acceleration.z;
 
     position.x += timeStep * velocity.x;
     position.y += timeStep * velocity.y;
-    position.z += timeStep * velocity.z;
+    //position.z += timeStep * velocity.z;
 }
 
 double Body::RandomBetween( double min, double max )
@@ -37,14 +38,18 @@ double Body::RandomBetween( double min, double max )
 
 void Body::AtRandom( Scalar radius )
 {
+    float randomAngle;
+    float randomSpeed;
+
     position.x = RandomBetween( -radius, radius );
     position.y = RandomBetween( -radius, radius );
-    position.z = RandomBetween( -radius, radius );
+    position.z = 0.0;
 
-//DEBUG for speeds
-	velocity.x = RandomBetween( -0.5, 0.5 );
-	velocity.y = RandomBetween( -0.5, 0.5 );
-	velocity.z = RandomBetween( -0.5, 0.5 );
-//END
+    randomSpeed = RandomBetween( 0.0, Entity::RANDOM_SPEED );
+    randomAngle = RandomBetween( 0.0, 2.0 * M_PI + 0.01 );
+    
+	velocity.x = randomSpeed * cos( randomAngle );
+	velocity.y = randomSpeed * sin( randomAngle );
+	velocity.z = 0.0;
 }
 

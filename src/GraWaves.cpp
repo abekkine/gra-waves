@@ -48,6 +48,7 @@ void GraWaves::Initialize()
 
     // Setup class constants
     Entity::DEFAULT_MASS = config->body_mass;
+    Entity::RANDOM_SPEED = config->body_initial_speed_limit;
     Wave::WAVE_LIFETIME = config->wave_lifetime;
     Wave::WAVE_SPEED = config->wave_speed;
     Wave::WAVE_DEFAULTCOLOR = config->wave_color;

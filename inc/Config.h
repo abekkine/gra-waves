@@ -30,6 +30,7 @@ public:
     double body_mass;
     int body_display;
     int body_color;
+    double body_initial_speed_limit;
     // Wave
     double wave_speed;
     double wave_lifetime;

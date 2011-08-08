@@ -30,6 +30,7 @@ void Config::Defaults()
     body_mass = 100.0;
     body_display = true;
     body_color = 0xffffff;
+    body_initial_speed_limit = 2.0;
     // Wave
     wave_speed = 1.0;
     wave_lifetime = 100.0;
@@ -73,6 +74,7 @@ void Config::Read( const char *filename )
             config_setting_lookup_float( setting_cfg, "mass", &body_mass );
             config_setting_lookup_int( setting_cfg, "display", &body_display );
             config_setting_lookup_int( setting_cfg, "color", &body_color );
+            config_setting_lookup_float( setting_cfg, "randomspeed", &body_initial_speed_limit );
         }
 
         setting_cfg = config_lookup( &config, "gwaves.wave" );

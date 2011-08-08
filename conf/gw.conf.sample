@@ -31,6 +31,8 @@ gwaves =
         display = 1;
         //      0xRRGGBB
         color = 0xffffff;
+        // limit value for initial random speed.
+        randomspeed = 5.0;
     };
 
     // Wave configuration.

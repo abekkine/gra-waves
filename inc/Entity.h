@@ -16,6 +16,7 @@ public:
 
 public:
     static Scalar DEFAULT_MASS;
+    static Scalar RANDOM_SPEED;
 
 protected:
     unsigned int id;
