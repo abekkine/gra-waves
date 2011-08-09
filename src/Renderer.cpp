@@ -60,6 +60,10 @@ void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
         case 'r':
             _mode->Request( Mode::REQ_RESET );
             break;
+
+        case 'c':
+            _mode->Request( Mode::REQ_COLOR_WAVES );
+            break;
     }
 }
 

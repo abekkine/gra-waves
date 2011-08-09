@@ -78,6 +78,11 @@ public:
 	/// @param in enable
     void DumpEnable( bool enable );
 
+    // @brief
+    // @param in color
+    // @param out fWaveColorCommand
+    void ColorWaves( unsigned int color );
+
 public:
 	/// @brief Gravity coefficient as a class static value.
     static Scalar GRAVITY_COEF;
@@ -104,6 +109,12 @@ private:
 
     /// @brief Container to collect statistics.
     StatsType stats;
+
+    /// @brief Command flag to initiate wave color marking.
+    bool fWaveColorCommand;
+
+    /// @brief Marking color for waves.
+    unsigned int waveColor;
 
 	/// @brief Initialization of member variables.
     void initVars();

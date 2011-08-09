@@ -17,6 +17,7 @@ class Mode
             REQ_STEP,
             REQ_QUIT,
             REQ_RESET,
+            REQ_COLOR_WAVES,
             REQ_NONE
         } RequestType;
 

@@ -50,6 +50,16 @@ void Universe::initVars()
     stats.numBodies = 0;
     stats.numWaves = 0;
     stats.age = 0.0;
+
+    /// init wave coloring.
+    fWaveColorCommand = false;
+    waveColor = 0xffffff;
+}
+
+void Universe::ColorWaves( unsigned int color )
+{
+    fWaveColorCommand = true;
+    waveColor = color;
 }
 
 void Universe::Update( double timeStep )
@@ -84,7 +94,16 @@ void Universe::Update( double timeStep )
         (*iBody)->Update( timeStep );
 
         Wave *new_wave = new Wave( *iBody );
+        if( fWaveColorCommand )
+        {
+            new_wave->SetColor( waveColor );
+        }
         waves.push_back( new_wave );
+    }
+
+    if( fWaveColorCommand )
+    {
+        fWaveColorCommand = false;
     }
 
 

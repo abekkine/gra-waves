@@ -159,6 +159,10 @@ void GraWaves::ModeProcessing()
             _mode->SetMode( Mode::MODE_STEP );
             break;
 
+        case Mode::REQ_COLOR_WAVES:
+            universe->ColorWaves( 0xffffff );
+            break;
+
         case Mode::REQ_QUIT:
             _mode->SetMode( Mode::MODE_QUIT );
             break;
