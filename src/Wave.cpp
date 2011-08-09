@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <Util.h>
 #include <Wave.h>
 
 Scalar Wave::WAVE_LIFETIME = 1.0;
@@ -29,9 +30,9 @@ Wave::Wave( Body* body ):
     alive = true;
 
     fColorEnable = false;
-    convertColor( conDefaultColor, defaultColor, false );
+    Util::ConvertColor( conDefaultColor, defaultColor, false );
     defaultColor[3] = conAlpha;
-    convertColor( 0, waveColor, true );
+    Util::ConvertColor( 0, waveColor, true );
     activeColorPointer = &defaultColor[0];
 }
 
@@ -68,7 +69,7 @@ void Wave::Update( double timeStep )
 void Wave::SetColor( unsigned int color )
 {
     fColorEnable = true;
-    convertColor( color, waveColor );
+    Util::ConvertColor( color, waveColor );
     activeColorPointer = &waveColor[0];
 }
 
@@ -122,19 +123,3 @@ float *Wave::GetColor()
     return activeColorPointer;
 }
 
-void Wave::convertColor( unsigned int color, float *color_array, bool alpha )
-{
-    if( alpha )
-    {
-        color_array[0] = ( (color >> 24) & 0xff ) / 255.0;
-        color_array[1] = ( (color >> 16) & 0xff ) / 255.0;
-        color_array[2] = ( (color >> 8) & 0xff ) / 255.0;
-        color_array[3] = ( color & 0xff ) / 255.0;
-    }
-    else
-    {
-        color_array[0] = ( (color >> 16) & 0xff ) / 255.0;
-        color_array[1] = ( (color >> 8) & 0xff ) / 255.0;
-        color_array[2] = ( color & 0xff ) / 255.0;
-    }
-}

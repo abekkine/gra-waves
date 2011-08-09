@@ -46,7 +46,6 @@ private:
     float *activeColorPointer;
 
     void initVars();
-    void convertColor( unsigned int color, float *color_array, bool alpha=false );
     
 };
 

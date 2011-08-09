@@ -1,5 +1,6 @@
 #include <math.h>
-#include "Renderer.h"
+#include <Util.h>
+#include <Renderer.h>
 
 Renderer::Renderer()
 {
@@ -152,12 +153,12 @@ void Renderer::WaveDisplay( bool enable )
 
 void Renderer::SetBodyColor( unsigned int color )
 {
-    ConvertColor( color, bodyRed, bodyGreen, bodyBlue );
+    Util::ConvertColor( color, bodyRed, bodyGreen, bodyBlue );
 }
 
 void Renderer::SetWaveColor( unsigned int color )
 {
-    ConvertColor( color, waveRed, waveGreen, waveBlue );
+    Util::ConvertColor( color, waveRed, waveGreen, waveBlue );
 }
 
 void Renderer::SetWaveAlpha( double alphafactor )

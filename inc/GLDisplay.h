@@ -30,9 +30,6 @@ class GLDisplay {
     public:
         bool quitSignal;
 
-    protected:
-        void ConvertColor( unsigned int rgb, float& r, float& g, float& b );
-    
     private:
         double zoomFactor;
         int m_keyCode;
