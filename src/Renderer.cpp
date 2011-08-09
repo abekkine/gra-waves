@@ -49,19 +49,6 @@ void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
             _mode->Request( Mode::REQ_QUIT );
             break;
 
-        case 'z':
-            if( shift )
-            {
-                // Zoom in
-                Zoom( 1.25 );
-            }
-            else
-            {
-                // Zoom out
-                Zoom( 0.8 );
-            }
-            break;
-
         case 's':
             _mode->Request( Mode::REQ_STEP );
             break;

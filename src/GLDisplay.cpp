@@ -18,22 +18,37 @@ void GLDisplay::InitVars()
     m_screen_height = -1;
     bgRed = bgGreen = bgBlue = 0.0;
     bgAlpha = 1.0;
-    vpLeft = -100.0;
-    vpRight = 100.0;
-    vpBottom = -100.0;
-    vpTop = 100.0;
     vpNear = -1.0;
     vpFar = 1.0;
-    zoomFactor = 1.0;
+    // UPDATE : Pan/Zoom
+    _real_width = 100.0;
+    _real_height = 100.0;
+    _zoom_level = 1.0;
+    _x_offset = 0.0;
+    _y_offset = 0.0;
+    _pan_mode = 0;
+    _pan_start_x = 0;
+    _pan_start_y = 0;
+    _zoom_mode = 0;
+    _zoom_start_x = 0;
+    _zoom_start_y = 0;
+    _mouse_x = 0;
+    _mouse_y = 0;
+    // END : Pan/Zoom
 }
 
-void GLDisplay::Zoom( double factor )
+// UPDATE : Pan/Zoom
+void GLDisplay::SetWorldSize( double size )
 {
-    zoomFactor *= factor;
-    
-    if( m_screen != NULL )
+    if( m_screen_width > m_screen_height )
     {
-        Reshape( m_screen->w, m_screen->h );
+        _real_width = size;
+        _real_height = size * m_screen_height / m_screen_width;
+    }
+    else
+    {
+        _real_width = size * m_screen_width / m_screen_height;
+        _real_height = size;
     }
 }
 
@@ -45,10 +60,6 @@ void GLDisplay::SetScreenSize( int width, int height )
 
 void GLDisplay::ExitFunction()
 {
-    //DEBUG
-    puts( "ExitFunction called!" );
-    //END
-
     SDL_Quit();
 }
 
@@ -128,7 +139,21 @@ void GLDisplay::Reshape(int width, int height)
     glMatrixMode( GL_PROJECTION );
     glLoadIdentity();
 
-    glOrtho( vpLeft * zoomFactor, vpRight * zoomFactor, vpBottom * zoomFactor, vpTop * zoomFactor, vpNear, vpFar );
+    // UPDATE : Pan/Zoom
+    // viewport calculation.
+    {
+        double scaled_width = 0.5 * _real_width * _zoom_level;
+        double scaled_height = 0.5 * _real_height * _zoom_level;
+
+        vpLeft = _x_offset - scaled_width;
+        vpRight = _x_offset + scaled_width;
+
+        vpTop = _y_offset + scaled_height;
+        vpBottom = _y_offset - scaled_height;
+    }
+
+    glOrtho( vpLeft, vpRight, vpTop, vpBottom, vpNear, vpFar );
+    // END : Pan/Zoom
 
     glMatrixMode( GL_MODELVIEW );
     glLoadIdentity();
@@ -156,12 +181,110 @@ void GLDisplay::PollEvents()
                 ProcessKeys( m_event );
                 break;
 
+            // UPDATE : Pan/Zoom
+            case SDL_MOUSEBUTTONDOWN:
+            case SDL_MOUSEBUTTONUP:
+                ButtonEvent( &m_event.button );
+                break;
+
+            case SDL_MOUSEMOTION:
+                MotionEvent( &m_event.motion );
+                break;
+            // END : Pan/Zoom
+
             case SDL_QUIT:
                 quitSignal = true;
                 break;
         }
     }
 }
+
+// UPDATE : Pan/Zoom
+void GLDisplay::ButtonEvent( SDL_MouseButtonEvent* button )
+{
+    switch( button->button )
+    {
+        case SDL_BUTTON_LEFT:
+            break;
+
+        case SDL_BUTTON_RIGHT:
+            if( button->state == SDL_PRESSED )
+            {
+                _pan_mode = 1;
+                _pan_start_x = _mouse_x;
+                _pan_start_y = _mouse_y;
+            }
+            else
+            {
+                _pan_mode = 0;
+            }
+            break;
+
+        case SDL_BUTTON_MIDDLE:
+            if( button->state == SDL_PRESSED )
+            {
+                _zoom_mode = 1;
+                _zoom_start_x = _mouse_x;
+                _zoom_start_y = _mouse_y;
+            }
+            else
+            {
+                _zoom_mode = 0;
+            }
+            break;
+
+        case SDL_BUTTON_WHEELUP:
+            _zoom_level += 0.01;
+            Reshape(m_screen->w, m_screen->h);
+            break;
+
+        case SDL_BUTTON_WHEELDOWN:
+            _zoom_level -= 0.01;
+            Reshape(m_screen->w, m_screen->h);
+            break;
+    }
+}
+
+void GLDisplay::MotionEvent( SDL_MouseMotionEvent* motion )
+{
+    int dx, dy;
+    float scale_x, scale_y;
+
+    _mouse_x = motion->x;
+    _mouse_y = motion->y;
+
+    if( _zoom_mode != 0 )
+    {
+        dx = _mouse_x - _zoom_start_x;
+        dy = _mouse_y - _zoom_start_y;
+
+        /// @remark Zoom uses only y-axis
+        _zoom_level += dy * 0.02;
+
+        _zoom_start_x = _mouse_x;
+        _zoom_start_y = _mouse_y;
+
+        Reshape(m_screen->w, m_screen->h);
+    }
+
+    if( _pan_mode != 0 )
+    {
+        scale_x = (vpRight - vpLeft) / m_screen->w;
+        scale_y = (vpBottom - vpTop) / m_screen->h;
+
+        dx = _mouse_x - _pan_start_x;
+        dy = _mouse_y - _pan_start_y;
+
+        _x_offset -= dx * scale_x;
+        _y_offset += dy * scale_y;
+
+        _pan_start_x = _mouse_x;
+        _pan_start_y = _mouse_y;
+
+        Reshape( m_screen->w, m_screen->h );
+    }
+}
+// END : Pan/Zoom
 
 void GLDisplay::UserKeys( int keycode, bool shift, bool ctrl )
 {
@@ -193,17 +316,3 @@ void GLDisplay::SetBGAlpha( float alpha )
     bgAlpha = alpha;
 }
 
-void GLDisplay::SetViewport( double left, double right, double bottom, double top, double near, double far )
-{
-    vpLeft = left;
-    vpRight = right;
-    vpBottom = bottom;
-    vpTop = top;
-    vpNear = near;
-    vpFar = far;
-
-    if( m_screen != NULL )
-    {
-        Reshape(m_screen->w, m_screen->h);
-    }
-}

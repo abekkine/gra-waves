@@ -62,16 +62,15 @@ void GraWaves::Initialize()
 
     display->SetBGColor( config->display_bgcolor );
     display->SetScreenSize( config->display_screen_width, config->display_screen_height );
+    display->SetWorldSize( 5.0 * config->universe_radius );
     display->Init();
     display->BodyDisplay( (config->body_display)!=0 );
     display->SetBodyColor( config->body_color );
     display->WaveDisplay( (config->wave_display)!=0 );
-    display->SetViewport( -config->universe_radius, config->universe_radius, -config->universe_radius, config->universe_radius );
 
     // Setup simulation
     SetupSimulation();
 
-    //DEBUG
     _mode->DebugEnable( config->debug_mode );
 }
 

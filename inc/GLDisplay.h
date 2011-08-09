@@ -11,7 +11,9 @@ class GLDisplay {
         ~GLDisplay();
         
         void SetScreenSize( int width, int height );
-        void SetViewport( double left, double right, double bottom, double top, double near=-1.0, double far=1.0 );
+        // UPDATE : Pan/Zoom
+        void SetWorldSize( double size );
+        // END : Pan/Zoom
         bool Init();
         void PreRender();
         void PostRender();
@@ -31,7 +33,21 @@ class GLDisplay {
         bool quitSignal;
 
     private:
-        double zoomFactor;
+        // UPDATE : Pan/Zoom
+        double _real_width;
+        double _real_height;
+        double _zoom_level;
+        double _x_offset;
+        double _y_offset;
+        int _pan_mode;
+        int _zoom_mode;
+        int _mouse_x;
+        int _mouse_y;
+        int _pan_start_x;
+        int _pan_start_y;
+        int _zoom_start_x;
+        int _zoom_start_y;
+        // END : Pan/Zoom
         int m_keyCode;
         SDL_Event m_event;
         SDL_Surface *m_screen;
@@ -52,6 +68,10 @@ class GLDisplay {
         void InitVars();
         void GL_Init();
         void ProcessKeys( SDL_Event &event );
+        // UPDATE : Pan/Zoom
+        void ButtonEvent( SDL_MouseButtonEvent* button );
+        void MotionEvent( SDL_MouseMotionEvent* motion );
+        // END : Pan/Zoom
 };
 
 
