@@ -7,6 +7,7 @@ GLDisplay::GLDisplay()
 
 GLDisplay::~GLDisplay()
 {
+    SDL_FreeSurface( m_screen );
 }
 
 void GLDisplay::InitVars()
@@ -41,6 +42,15 @@ void GLDisplay::SetScreenSize( int width, int height )
     m_screen_height = height;
 }
 
+void GLDisplay::ExitFunction()
+{
+    //DEBUG
+    puts( "ExitFunction called!" );
+    //END
+
+    SDL_Quit();
+}
+
 bool GLDisplay::Init()
 {
     bool result = false;
@@ -53,7 +63,7 @@ bool GLDisplay::Init()
     }
     else
     {
-        atexit( SDL_Quit );
+        atexit( ExitFunction );
 
         m_screen = SDL_SetVideoMode( m_screen_width, m_screen_height, 16, SDL_OPENGL );
         if( m_screen == NULL )

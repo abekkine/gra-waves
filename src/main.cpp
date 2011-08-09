@@ -22,6 +22,8 @@ int main( int argc, char *argv[] )
 
     gWaves->Run();
 
+    delete gWaves;
+
     return 0;
 }
 

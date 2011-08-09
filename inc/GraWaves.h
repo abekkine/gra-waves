@@ -37,6 +37,8 @@ class GraWaves
         Timer *timer;
         void initVars();
         void ModeProcessing();
+        void SetupSimulation();
+        void CleanupSimulation();
 };
 
 #endif

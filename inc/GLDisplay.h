@@ -25,6 +25,9 @@ class GLDisplay {
         void Zoom( double factor );
 
     public:
+        static void ExitFunction();
+
+    public:
         bool quitSignal;
 
     protected:

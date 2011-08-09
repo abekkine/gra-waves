@@ -15,9 +15,12 @@ GraWaves::GraWaves()
 
 GraWaves::~GraWaves()
 {
+    CleanupSimulation();
+
     delete display;
-    delete universe;
+    delete timer;
     delete config;
+    delete _mode;
 }
 
 void GraWaves::initVars()
@@ -65,6 +68,15 @@ void GraWaves::Initialize()
     display->WaveDisplay( (config->wave_display)!=0 );
     display->SetViewport( -config->universe_radius, config->universe_radius, -config->universe_radius, config->universe_radius );
 
+    // Setup simulation
+    SetupSimulation();
+
+    //DEBUG
+    _mode->DebugEnable( config->debug_mode );
+}
+
+void GraWaves::SetupSimulation()
+{
     // calculate ticks number corresponding correct period of time.
     if( config->general_frequency > 0 )
     {
@@ -84,9 +96,11 @@ void GraWaves::Initialize()
 
     display->RegisterBodies( universe->GetBodies() );
     display->RegisterWaves( universe->GetWaves() );
+}
 
-    //DEBUG
-    _mode->DebugEnable( config->debug_mode );
+void GraWaves::CleanupSimulation()
+{
+    delete universe;
 }
 
 void GraWaves::Run()
@@ -95,7 +109,14 @@ void GraWaves::Run()
     {
         ModeProcessing();
 
-        if( Mode::MODE_RUN == _mode->GetMode() )
+        if( Mode::MODE_RESET == _mode->GetMode() )
+        {
+            CleanupSimulation();
+            SetupSimulation();
+
+            _mode->SetMode( Mode::MODE_PAUSE );
+        }
+        else if( Mode::MODE_RUN == _mode->GetMode() )
         {
             Step();
         }
@@ -127,6 +148,10 @@ void GraWaves::ModeProcessing()
 
     switch( req )
     {
+        case Mode::REQ_RESET:
+            _mode->SetMode( Mode::MODE_RESET );
+            break;
+
         case Mode::REQ_TOGGLE:
             _mode->Toggle();
             break;

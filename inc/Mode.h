@@ -8,6 +8,7 @@ class Mode
             MODE_RUN = 0,
             MODE_PAUSE,
             MODE_STEP,
+            MODE_RESET,
             MODE_QUIT
         } ModeType;
 
@@ -15,6 +16,7 @@ class Mode
             REQ_TOGGLE = 0,
             REQ_STEP,
             REQ_QUIT,
+            REQ_RESET,
             REQ_NONE
         } RequestType;
 

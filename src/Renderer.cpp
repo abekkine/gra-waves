@@ -68,6 +68,10 @@ void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
         case ' ':
             _mode->Request( Mode::REQ_TOGGLE );
             break;
+
+        case 'r':
+            _mode->Request( Mode::REQ_RESET );
+            break;
     }
 }
 

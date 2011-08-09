@@ -92,8 +92,8 @@ void Mode::DebugEnable( bool value )
 
 void Mode::Debug( const char *debugMsg )
 {
-    static char modeStr[4][8] = { "RUN", "PAUSE", "STEP", "QUIT" };
-    static char requestStr[4][8] = { "TOGGLE", "STEP", "QUIT", "NONE" };
+    static char modeStr[5][8] = { "RUN", "PAUSE", "STEP", "RESET", "QUIT" };
+    static char requestStr[5][8] = { "TOGGLE", "STEP", "QUIT", "RESET", "NONE" };
     
     if( fDebugEnable )
     {
