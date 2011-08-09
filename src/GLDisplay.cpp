@@ -150,6 +150,9 @@ void GLDisplay::Reshape(int width, int height)
 
         vpTop = _y_offset + scaled_height;
         vpBottom = _y_offset - scaled_height;
+
+        // Update Pick Distance
+        _pick_distance = _pick_range * (vpRight - vpLeft) / m_screen->w;
     }
 
     glOrtho( vpLeft, vpRight, vpTop, vpBottom, vpNear, vpFar );
@@ -314,5 +317,22 @@ void GLDisplay::SetBGColor( unsigned int color )
 void GLDisplay::SetBGAlpha( float alpha )
 {
     bgAlpha = alpha;
+}
+
+void GLDisplay::GetRealCoordinates( float& x, float& y )
+{
+    x =  (_mouse_x * (vpRight - vpLeft) / m_screen->w) + vpLeft;
+    y = (_mouse_y * (vpBottom - vpTop) / m_screen->h ) + vpTop; 
+    y = -1.0 * y;
+}
+
+void GLDisplay::SetPickRange( int range )
+{
+    _pick_range = range;
+}
+
+float GLDisplay::PickDistance()
+{
+    return _pick_distance;
 }
 

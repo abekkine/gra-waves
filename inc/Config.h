@@ -26,6 +26,7 @@ public:
     int display_screen_width;
     int display_screen_height;
     int display_bgcolor;
+    int display_pickrange;
     // Body
     double body_mass;
     int body_display;

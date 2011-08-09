@@ -40,6 +40,7 @@ class Renderer : public GLDisplay {
         void RenderBodies();
         void RenderWaves();
         void RenderSingleWave( Vector center, double radius, float *color );
+        void PickRequest();
 };
 
 #endif

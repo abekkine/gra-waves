@@ -17,6 +17,9 @@ gwaves =
             height = 500;
         };
 
+        // object picking maximum range in pixels.
+        pickrange = 5;
+
         // Background color. 
         // Color format, in hex; 
         //        0xRRGGBB

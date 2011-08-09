@@ -62,6 +62,7 @@ void GraWaves::Initialize()
 
     display->SetBGColor( config->display_bgcolor );
     display->SetScreenSize( config->display_screen_width, config->display_screen_height );
+    display->SetPickRange( config->display_pickrange );
     display->SetWorldSize( 5.0 * config->universe_radius );
     display->Init();
     display->BodyDisplay( (config->body_display)!=0 );
@@ -172,3 +173,4 @@ void GraWaves::ModeProcessing()
             break;
     }
 }
+

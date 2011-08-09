@@ -24,13 +24,17 @@ class GLDisplay {
         void PollEvents();
         void SetBGColor( unsigned int color );
         void SetBGAlpha( float alpha );
-        void Zoom( double factor );
+        void SetPickRange( int range );
+        float PickDistance();
 
     public:
         static void ExitFunction();
 
     public:
         bool quitSignal;
+
+    protected:
+        void GetRealCoordinates( float& x, float& y );
 
     private:
         // UPDATE : Pan/Zoom
@@ -48,6 +52,8 @@ class GLDisplay {
         int _zoom_start_x;
         int _zoom_start_y;
         // END : Pan/Zoom
+        int _pick_range;
+        float _pick_distance;
         int m_keyCode;
         SDL_Event m_event;
         SDL_Surface *m_screen;

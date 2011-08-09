@@ -78,9 +78,9 @@ public:
 	/// @param in enable
     void DumpEnable( bool enable );
 
-    // @brief
-    // @param in color
-    // @param out fWaveColorCommand
+    /// @brief Color single spawn of waves.
+    /// @param in color
+    /// @param out fWaveColorCommand
     void ColorWaves( unsigned int color );
 
 public:

@@ -26,6 +26,7 @@ void Config::Defaults()
     display_screen_width = 100;
     display_screen_height = 100;
     display_bgcolor = 0;
+    display_pickrange = 5;
     // Body
     body_mass = 100.0;
     body_display = true;
@@ -68,6 +69,7 @@ void Config::Read( const char *filename )
                 config_setting_lookup_int( screen_cfg, "height", &display_screen_height );
             }
 
+            config_setting_lookup_int( setting_cfg, "pickrange", &display_pickrange );
             config_setting_lookup_int( setting_cfg, "bgcolor", &display_bgcolor );
         }
 

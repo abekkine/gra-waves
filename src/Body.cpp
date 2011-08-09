@@ -18,6 +18,7 @@ Body::~Body()
 void Body::initVars()
 {
     // Nothing to initialize.
+    fSelected = false;
 }
 
 void Body::Update( double timeStep )
@@ -77,5 +78,15 @@ void Body::SetSpeedLimit( bool limit_enable, Scalar limit_value )
 {
     fLimitEnable = limit_enable;
     speedLimit = limit_value;
+}
+
+void Body::Select( bool value )
+{
+    fSelected = value;
+}
+
+bool Body::Selected()
+{
+    return fSelected;
 }
 

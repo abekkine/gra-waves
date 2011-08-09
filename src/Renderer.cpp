@@ -53,6 +53,10 @@ void Renderer::UserKeys( int keycode, bool shift, bool ctrl )
             _mode->Request( Mode::REQ_STEP );
             break;
 
+        case 'p':
+            PickRequest();
+            break;
+
         case ' ':
             _mode->Request( Mode::REQ_TOGGLE );
             break;
@@ -84,13 +88,20 @@ void Renderer::RenderBodies()
     BodyVectorType::iterator iBody;
     Vector pos;
 
-    glColor3f( bodyRed, bodyGreen, bodyBlue );
     glPointSize( 2.0 );
     glBegin( GL_POINTS );
 
         for( iBody=bodies.begin(); iBody!=bodies.end(); ++iBody )
         {
             pos =(*iBody)->GetPosition();
+            if( (*iBody)->Selected() )
+            {
+                glColor3f( 1.0, 0.0, 0.0 );
+            }
+            else
+            {
+                glColor3f( bodyRed, bodyGreen, bodyBlue );
+            }
             glVertex2d( pos.x, pos.y );
         }
 
@@ -155,4 +166,34 @@ void Renderer::SetWaveColor( unsigned int color )
 void Renderer::SetWaveAlpha( double alphafactor )
 {
     Renderer::alphafactor = alphafactor;
+}
+
+void Renderer::PickRequest()
+{
+    float pick_x, pick_y;
+    Vector Pick;
+    Vector distance;
+    BodyVectorType::iterator iBody;
+
+    GetRealCoordinates( pick_x, pick_y );
+
+// UPDATE : Pick
+    if( Mode::MODE_PAUSE == _mode->GetMode() )
+    {
+        for( iBody=bodies.begin(); iBody!=bodies.end(); ++iBody )
+        {
+            Pick.Set( pick_x, pick_y, 0.0 );
+            distance = (*iBody)->GetPosition() - Pick;
+
+            if( ~distance < PickDistance() )
+            {
+                (*iBody)->Select( true );
+            }
+            else
+            {
+                (*iBody)->Select( false );
+            }
+        }
+    }
+// END : Pick
 }
