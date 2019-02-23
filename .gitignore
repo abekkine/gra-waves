@@ -1,0 +1,9 @@
+grawvs
+*.o
+*.avi
+*.conf
+*.pyc
+version.h
+.sconsign.dblite
+
+
